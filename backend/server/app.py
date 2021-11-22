@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager
 
 from apis.Controller.loginController import login_bp
 from apis.Controller.userController import user_bp
-
+from apis.Controller.diaryController import diary_bp
 from db_connect import db
 import config
 
@@ -14,6 +14,7 @@ def create_app():
   app = Flask(__name__)
   app.register_blueprint(login_bp)
   app.register_blueprint(user_bp)
+  app.register_blueprint(diary_bp)
   app.config.from_object(config)
 
   JWTManager(app)
