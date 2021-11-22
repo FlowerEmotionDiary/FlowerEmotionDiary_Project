@@ -15,14 +15,11 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <div>
           <Routes >
-            <Route exact path="/calendar" component={<CalendarPage/>} />
+            <Route exact path="/calendar" element={<CalendarPage/>} />
           </Routes>
-        </div>
       </Router>
     </div>
-    
   );
 }
 
