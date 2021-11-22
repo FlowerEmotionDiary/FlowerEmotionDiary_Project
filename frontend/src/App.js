@@ -2,10 +2,10 @@ import './App.css';
 // import Login from './Login';
 // import EventPractice from './EventPractice';
 // import Say from './Say';
-import CalendarPage from './Calendar';'./pages/CalendarPage';
+import CalendarPage from './pages/CalendarPage';
 
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes , Route} from 'react-router-dom';
 
 const App = () => {
   // return <Say />;
@@ -16,9 +16,9 @@ const App = () => {
     <div className="App">
       <Router>
         <div>
-          <Switch>
-            <Route exact path="/calendar" component={CalendarPage} />
-          </Switch>
+          <Routes >
+            <Route exact path="/calendar" component={<CalendarPage/>} />
+          </Routes>
         </div>
       </Router>
     </div>
