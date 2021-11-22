@@ -1,15 +1,20 @@
-import './App.css';
-// import Login from './Login';
-// import EventPractice from './EventPractice';
-// import Say from './Say';
-import LoginTest from './LoginTest';
-// import DiaryWrite from './DiaryWrite';
+import "./App.css";
+import CalendarPage from "./pages/CalendarPage";
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  // return <Say />;
-  // return <Login />;
-  // return <DiaryWrite />;
-  return <LoginTest />;
-}
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route exact path="/calendar" element={<CalendarPage />} />
+        </Routes>
+      </Router>
+    </div>
+  );
+};
 
 export default App;
+
