@@ -17,7 +17,8 @@ const LoginTest = () => {
     const [email, setEmail] = useState('');
     const [pw,  setPW] = useState('');
     const onClick = () => {
-        axios.post('http://localhost:5000/api/login', {email: {email}, password: {pw}}).then((res) => {
+        const data = {email: email, password: pw}
+        axios.post('http://localhost:5000/api/login', data).then((res) => {
             console.log(res)
         })
     };
