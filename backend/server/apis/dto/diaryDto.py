@@ -1,4 +1,15 @@
+from datetime import datetime
 from flask.json import jsonify
+
+def diary_post_request_dto(diary):
+    date_tmp = datetime.strptime(diary['date'], '%Y-%m-%d')
+    date = date_tmp.strftime("%Y-%m-%d")
+    return {
+        "title": diary['title'],
+        "content": diary["content"],
+        "date":date
+    }
+
 
 def user_response_dto(user):
     if user == "email is aready done":
