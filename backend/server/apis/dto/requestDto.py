@@ -22,3 +22,7 @@ def diary_request_dto(diary):
         "date":date
     }
 
+def date_request_dto(date):
+    date_tmp = datetime.strptime(date, '%Y-%m-%d')
+    new_date = date_tmp.strftime("%Y-%m-%d")
+    return new_date

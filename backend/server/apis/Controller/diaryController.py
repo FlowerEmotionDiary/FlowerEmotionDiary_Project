@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from apis.dto.requestDto import diary_request_dto
+from apis.dto.requestDto import diary_request_dto, date_request_dto
 from apis.dto.responseDto import diary_respose_dto
 from service.diaryService import diary_post_service, diary_read_service, diary_list_service
 
@@ -17,10 +17,12 @@ def diary_post():
 
 
 # 일기 보기
-@diary_bp.route("/diary/{date}", methods=['GET']) 
+@diary_bp.route("/diary/<string:date>", methods=['GET']) 
 def diary(date):
     user_id = 1
-    diary = diary_read_service(user_id, date)
+    print(date)
+    new_date = date_request_dto(date)
+    diary = diary_read_service(user_id, new_date)
     return diary_respose_dto(diary)
 
 
