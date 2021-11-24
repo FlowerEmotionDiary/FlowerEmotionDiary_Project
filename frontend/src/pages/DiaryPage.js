@@ -3,7 +3,7 @@
 // import axios from "axios";
 // import { useParams } from "react-router";
 
-const DiaryResult = () => {
+const DiaryPage = () => {
     // let { date } = useParams();
     // const diary = axios.get('http://localhost:5000/api/diary/{date}');
     // return (
@@ -16,4 +16,4 @@ const DiaryResult = () => {
     return <h1>SUCCESS</h1>;
 }
 
-export default DiaryResult;
+export default DiaryPage;
