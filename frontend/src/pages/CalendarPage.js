@@ -15,7 +15,7 @@ function CalendarPage() {
       await axios.get(`http://localhost:5000/api/diary/${date}`);
       navigate(`/diary/${date}`);
     } catch (error) {
-      navigate(`/diary-write/${date}`);
+      navigate(`/diary-write`);
     }
   }
 
