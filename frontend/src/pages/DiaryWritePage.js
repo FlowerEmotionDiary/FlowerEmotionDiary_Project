@@ -43,7 +43,7 @@ const DiaryWritePage = () => {
         axios.post('http://localhost:5000/api/diary', diaryData).then((res) => {
         console.log(res)
         })
-        // navigate(`/diary/${whatDay}`);
+        navigate(`/diary/${whatDay}`);
     }
 
     var navigate = useNavigate();
@@ -52,7 +52,7 @@ const DiaryWritePage = () => {
         <>
         <TopTitle />
         <div className="Diary">
-            <Form onSubmit={navigate(`/diary/${whatDay}`)}>
+            <Form onSubmit={SubmitDiary}>
             {/* <Form onSubmit={navigate(`/diary/${whatDay}`)}> */}
             {/* <Form> */}
                 <FormField>
@@ -91,7 +91,7 @@ const DiaryWritePage = () => {
                     />
                 </FormField>
                 <FormField>
-                    <Button type="submit" className="DiaryWriteButton" onClick={SubmitDiary}>저장</Button>
+                    <Button type="submit" className="DiaryWriteButton">저장</Button>
                     {/* <Button type="submit" className="DiaryWriteButton">저장</Button> */}
                 </FormField>
             </Form>
