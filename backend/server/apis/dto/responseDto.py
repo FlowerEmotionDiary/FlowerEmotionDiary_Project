@@ -21,3 +21,9 @@ def diary_respose_dto(result):
         "title":result.title,
         "content":result.content
         }), 200
+
+def diaries_response_dto(result):
+    if result:
+        return jsonify(result), 200
+    else:
+        return 'failed', 400

@@ -7,41 +7,53 @@ import axios from 'axios';
 
 
 function CalendarPage() {
-  const [calendar, setCalendar] = useState(); 
+  const [calendar, setCalendar] = useState(false); 
   const navigate = useNavigate();
+
   const getDiary = async (date) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/diary/${date}`);
-      const{data} = response;
-      console.log(data);
+      await axios.get(`http://localhost:5000/api/diary/${date}`);
       navigate(`/diary/${date}`);
     } catch (error) {
-      console.error(error);
       navigate(`/diary-write/${date}`);
     }
   }
 
   const handleDateChange = (e) => {
     const date = e.target.value
-    console.log(date, e.target.value);
     getDiary(date);
   }
 
-  useEffect(()=>{
-    const getCalendar = async() => {
-      const response = await axios.get(`http://localhost:5000/api/diaries`);
-      const {data} = response;
-      console.log(data)
-      setCalendar(data);
-    }
-    getCalendar();
-  })
+  // useEffect(()=>{
 
+  //   getCalendar();
+  // })
+
+  const getCalendar = async() => {
+    const response = await axios.get(`http://localhost:5000/api/diaries`);
+    setCalendar(response.data);
+    console.log("calendar: ", calendar)
+  }
+
+  function Diary({diary}) {
+    return (
+      <div>
+        <p>date: {diary.date}</p>
+        <p>title: {diary.title}</p> 
+        <p>content: {diary.content}</p>
+      </div>
+    )
+  }
   return (
     <div>
       <input type="date" name="date" onChange={handleDateChange} />
+      <button onClick={getCalendar}>diary print</button>
       <div>
-        {calendar}
+        { 
+          calendar?
+            calendar.map(diary => <Diary diary={diary} />) 
+          : null
+        }
       </div>
     </div>
   );

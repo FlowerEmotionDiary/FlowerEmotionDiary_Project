@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from apis.dto.requestDto import diary_request_dto, date_request_dto
-from apis.dto.responseDto import diary_respose_dto
+from apis.dto.responseDto import diary_respose_dto, diaries_response_dto
 from service.diaryService import diary_post_service, diary_read_service, diary_list_service
 
 diary_bp = Blueprint('diary', __name__, url_prefix='/api')
@@ -31,4 +31,4 @@ def diary(date):
 def diary_list():
     user_id = 1
     result = diary_list_service(user_id)
-    return jsonify(result)
+    return diaries_response_dto(result)
