@@ -16,8 +16,14 @@ def login_response_dto(result):
 
 def diary_respose_dto(result):
     if result is None:
-        return 'fai;ed', 400
+        return 'failed', 400
     return jsonify({
         "title":result.title,
         "content":result.content
-        })
+        }), 200
+
+def diaries_response_dto(result):
+    if result:
+        return jsonify(result), 200
+    else:
+        return 'failed', 400
