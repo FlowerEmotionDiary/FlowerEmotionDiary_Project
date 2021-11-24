@@ -1,14 +1,14 @@
 import { useState } from "react";
-import ReactDOM from "react-dom";
-// import { useNavigate } from "react-router-dom";
+// import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 import TopTitle from "../components/login-topSection/TopTitle";
 import axios from "axios";
 import { Button, Form, FormField, Input } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
 // import DiaryPage from "./DiaryPage";
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+// import { BrowserRouter, useNavigate } from 'react-router-dom';
 // import { useNavigate } from "react-router";
-import App from "../App";
+// import App from "../App";
 
 const DiaryWritePage = () => {
     const [title, setTitle] = useState('');
@@ -100,11 +100,11 @@ const DiaryWritePage = () => {
     );
 }
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>, 
-document.getElementById('root')
-);
+// ReactDOM.render(
+//     <BrowserRouter>
+//         <App />
+//     </BrowserRouter>, 
+// document.getElementById('root')
+// );
 
 export default DiaryWritePage;
