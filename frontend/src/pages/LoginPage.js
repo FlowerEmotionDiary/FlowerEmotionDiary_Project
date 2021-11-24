@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import { Route } from 'react-router-dom';
-import TopTitle from './components/login-topSection/TopTitle';
-import Calendar from './Calendar';
+import TopTitle from '../components/login-topSection/TopTitle';
+import Calendar from '../Calendar';
 // import BottomSection from './components/login-bottomSection/BottomSection';
 import './Login.scss';
 
-//hhhhhh
-//bvivihvyi
-const Login = () => {
+
+const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [pw,  setPW] = useState('');
     const onClick = () => {

@@ -10,6 +10,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route exact path="/calendar" element={<CalendarPage />} />
+          <Route exact path="/diary" element={<DiaryResult   />} />
+          <Route exact path="/diary-write" element={<DiaryWrite  />} />
         </Routes>
       </Router>
     </div>
