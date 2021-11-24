@@ -1,28 +1,28 @@
 import "./App.css";
-import CalendarPage from "./pages/CalendarPage";
+// import CalendarPage from "./pages/CalendarPage";
 import DiaryWritePage from "./pages/DiaryWritePage";
 import DiaryPage from "./pages/DiaryPage";
-import Login from "./Login";
-import Register from "./Register";
+// import Login from "./Login";
+// import Register from "./Register";
 import React from "react";
-// import { Routes, Route, Navigate } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import FirstPage from "./FirstPage";
-import MoreAbout from "./MoreAbout";
+import { Routes, Route, Navigate } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
+// import FirstPage from "./FirstPage";
+// import MoreAbout from "./MoreAbout";
 
 const App = () => {
   // const diaryResultPath = `/diary/${date}`
   return (
     <div className="App">
         <Routes>
-          <Route path="/" element={<FirstPage />} />
-          <Route path="moreAbout" element={<MoreAbout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route  path="/calendar" element={<CalendarPage />} />
+          {/* <Route path="/" element={<FirstPage />} /> */}
+          {/* <Route path="moreAbout" element={<MoreAbout />} /> */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/register" element={<Register />} /> */}
+          {/* <Route  path="/calendar" element={<CalendarPage />} /> */}
           <Route  path="/diary-write" element={<DiaryWritePage />} /> {/* 일기 작성 페이지 */}
           <Route  path="/diary/:date" element={<DiaryPage />} /> {/* 일기 보여주는 페이지 */}
-          {/* <Route path="/" element={<Navigate to="/diary-write" />} /> */}
+          <Route path="/" element={<Navigate to="/diary-write" />} />
         </Routes>
     </div>
   );
