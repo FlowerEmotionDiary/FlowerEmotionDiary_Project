@@ -28,7 +28,7 @@ const user = (state = initState, action) => {
                 access_token: action.access_token
             }
         
-        defalut:
+        default:
             return state;
     }
 };
