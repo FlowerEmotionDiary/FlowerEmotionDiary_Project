@@ -14,14 +14,12 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router>
         <Routes>
           <Route exact path="/calendar" element={<CalendarPage />} />
           <Route exact path="/diary-write" element={<DiaryWritePage />} />
           <Route exact path="/diary/:date" element={<DiaryPage />} />
           <Route exact path="/login" element={<LoginPage  />} />
         </Routes>
-      </Router>
     </Provider>
   );
 };
