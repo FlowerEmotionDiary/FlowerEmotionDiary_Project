@@ -1,6 +1,6 @@
 import "./App.css";
 import CalendarPage from "./pages/CalendarPage";
-import DiaryWrite from "./pages/DiaryWritePage";
+import DiaryWritePage from "./pages/DiaryWritePage";
 import DiaryPage from "./pages/DiaryPage";
 import LoginPage from "./pages/LoginPage"
 import React from "react";
@@ -17,7 +17,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route exact path="/calendar" element={<CalendarPage />} />
-          <Route exact path="/diary-write" element={<DiaryWrite />} />
+          <Route exact path="/diary-write" element={<DiaryWritePage />} />
           <Route exact path="/diary/:date" element={<DiaryPage />} />
           <Route exact path="/login" element={<LoginPage  />} />
         </Routes>
@@ -27,4 +27,5 @@ const App = () => {
 };
 
 export default App;
+
 
