@@ -40,7 +40,7 @@ const DiaryWritePage = () => {
         // const whatDay = `${year}-${month >= 10 ? month : '0' + month}-${day >= 10 ? day : '0' + day}`;
         // console.log(whatDay);
         const diaryData = {title:title, content: content, date: whatDay};
-        axios.post('http://localhost:5000/api/diary', diaryData).then((res) => {
+        axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary', diaryData).then((res) => {
         console.log(res)
         })
         navigate(`/diary/${whatDay}`);

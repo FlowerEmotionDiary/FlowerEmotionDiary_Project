@@ -13,7 +13,7 @@ function CalendarPage() {
 
   const getDiary = async (date) => {
     try {
-      await axios.get(`http://localhost:5000/api/diary/${date}`);
+      await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`);
       navigate(`/diary/${date}`);
     } catch (error) {
       navigate(`/diary-write`);
@@ -31,7 +31,7 @@ function CalendarPage() {
   // })
 
   const getCalendar = async() => {
-    const response = await axios.get(`http://localhost:5000/api/diaries`);
+    const response = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
     setCalendar(response.data);
     console.log("calendar: ", calendar)
   }
