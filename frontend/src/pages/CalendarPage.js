@@ -1,9 +1,12 @@
 // 참고 : https://yeolceo.tistory.com/69
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DiaryWritePage from "./DiaryWritePage";
+
+const BACKEND_URL =
+  "http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api";
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -30,31 +33,21 @@ const CalendarPage = () => {
     // }
 
     const getDiary = async (date) => {
-      // console.log("dtae: ", date)
       const sendyear = date[0] + date[1] + date[2] + date[3];
       const sendmonth = date[5] + date[6];
       const sendday = date[8] + date[9];
-
       try {
         await axios.get(
           `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`
         );
-
         navigate(`/diary/${date}`);
       } catch (error) {
-        navigate(`/diary-write?date=${date}`);
+        return (
+          <DiaryWritePage year={sendyear} month={sendmonth} day={sendday} />
+        );
+        // navigate(`/diary-write`);
       }
     };
-
-    // const func = () => {
-    //   try {
-    //     if (Math.random() > 0.5) return abc
-    //   } catch(e) {
-    //     return bcd
-    //   }
-    // }
-
-    // const result =func()
 
     for (let week = firstWeek; week <= lastWeek; week++) {
       result = result.concat(
@@ -132,6 +125,29 @@ const CalendarPage = () => {
     console.log("calendar: ", calendar);
   };
 
+  useEffect(() => {
+    axios
+      .post(`${BACKEND_URL}/login`, {
+        email: "email1",
+        password: "12345",
+      })
+      .then((response) => {
+        const {
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        } = response.data;
+
+        return axios.get(`${BACKEND_URL}/check`, {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        });
+      })
+      .then((response) => {
+        console.log("result : ", response.data);
+      });
+  }, []);
+
   return (
     <div className="App">
       <div className="control">
@@ -149,11 +165,9 @@ const CalendarPage = () => {
           다음달
         </button>
       </div>
-
       <table>
         <tbody>{calendarArr()}</tbody>
       </table>
-      <button onClick={getCalendar}>diary print</button>
       <div>
         {calendar ? calendar.map((diary) => <Diary diary={diary} />) : null}
       </div>
