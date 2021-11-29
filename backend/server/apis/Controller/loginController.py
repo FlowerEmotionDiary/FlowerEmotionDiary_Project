@@ -23,7 +23,7 @@ def silent_refresh():
     return jsonify(access_token=access_token)
 
 # 토큰 보냈을 때 유저 정보 체크
-@login_bp.route("/check", methods=['GET'])
+@login_bp.route("/check", methods=['POST'])
 @jwt_required(refresh=True)
 def check():
     user = check_user()
