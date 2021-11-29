@@ -1,64 +1,61 @@
-import React, {useState, useEffect} from "react";
-import { useDispatch} from "react-redux";
+import React from "react";
 import { useNavigate } from 'react-router';
-import { login } from "../../redux/action";
-import axios from 'axios';
+import { Formik } from "formik";
+import { loginCheckDB, loginDB } from "./LoginValidation"
 
 const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [pw,  setPW] = useState('');
-    const [validation, setValidation] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [allOk, setAllOk] = useState(false);
+	const navigate = useNavigate();
+	return (
+		<div>
+			<Formik 
+				initialValues={{ email: "", password: ""}}
+				// validationSchema={}
+				onSubmit={(values, {setSubmitting}) => {
+					console.log(values);
+					loginDB(values, navigate);
+					loginCheckDB();
+					setSubmitting(false);
+				}}>
+				{formik => (
+					<form onSubmit={formik.handleSubmit}>
 
-    const loginHandler = async () => {
-        setEmail('');
-        setPW('');
-        if(allOk){
-            try{
-                const response = await axios.post('http://127.0.0.1:5000//api/login', 
-                    {
-                        email: email, password: pw 
-                    });
-                
-                    dispatch(login(response.data.access_token, response.data.user_id));
-                    console.log(response.data.access_token);
-                    navigate('/calendar');
-            } catch(error) {
-                console.log('try again');
-            }
-        } else {
-            console.log('try again');
-        }
-    };
+						<label htmlFor="email">Email</label>
+						<input id="email" typ="eamil" {...formik.getFieldProps('email')} />
+						{ formik.touched.email && formik.errors.email ? 
+							(<div>{formik.errors.email}</div>) : null }
 
-    // email과 pw가 전부 입력되었는지 확인.
-    useEffect(() => {
-        if(email !== '' && pw !== '') setAllOk(true);
-        else setAllOk(false);
-    }, [email, pw]);
+						<label htmlFor="password">Password</label>
+						<input id="password" type="password" {...formik.getFieldProps('password')}/>
+						{ formik.touched.password && formik.errors.password ? 
+							(<div>{formik.errors.password}</div>) : null }
 
-    return (
-        <div>
-            <input 
-                type="text" 
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
-                placeholder="이메일을 입력하세요." />
-            <input
-                type="text"
-                value={pw}
-                onChange={
-                    (e) => {
-                        setPW(e.target.value)
-                    }
-                }
-                placeholder="  비밀번호를 입력하세요."
-            />
-            <button type="submit" onClick={loginHandler}>LOGIN</button>
-        </div>
-    )
+						<button type="submit">Login</button>
+
+					</form>
+				)}
+			</Formik>
+
+
+
+
+			{/* <input 
+				type="text" 
+				value={email} 
+				onChange={e => setEmail(e.target.value)} 
+				placeholder="이메일을 입력하세요." />
+			<input
+					type="text"
+					value={pw}
+					onChange={
+						(e) => {
+								setPW(e.target.value)
+						}
+					}
+					placeholder="  비밀번호를 입력하세요."
+			/>
+			<button type="submit" onClick={loginHandler}>LOGIN</button> */}
+		</div>
+	)
 
 }
 
