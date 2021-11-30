@@ -1,7 +1,8 @@
 from domain.dao.userDao import one_user
 from bcrypt import hashpw, checkpw, gensalt
+from flask.json import jsonify
 from flask_jwt_extended import (
-    create_access_token, create_refresh_token, jwt_required, get_jwt_identity
+    create_access_token, create_refresh_token, get_jwt_identity, set_access_cookies, set_refresh_cookies
 )
 
 def login_user(user):
@@ -14,9 +15,16 @@ def login_user(user):
     elif not checkpw(password.encode("utf-8"), user.password.encode("utf-8")):
         return 'login fail'
     else:
+        # 토큰 생성
         access_token = create_access_token(identity=user.id, fresh=True)
-        refresh_token = create_refresh_token(identity=email)
-        return [access_token, refresh_token]
+        refresh_token = create_refresh_token(identity=user.id)
+
+        response = jsonify({'login': True})
+        set_refresh_cookies(response, refresh_token)
+
+        result = {"access_token":access_token}
+        return result
+
 
 # 토큰 재발급
 def token_reissuance():

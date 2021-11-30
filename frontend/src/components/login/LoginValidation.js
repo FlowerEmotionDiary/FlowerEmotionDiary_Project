@@ -2,17 +2,16 @@ import axios from "axios";
 import store, { login, logout } from "../../redux_store/userSlice";
 import { getCookie, setCookie} from "./Auth";
 
-const JWT_EXPIRRY_TIME = 24 * 3600 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
+const JWT_EXPIRRY_TIME = 60 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
 
-const loginDB = async (values, navigate) => {
+const loginDB = (values, navigate) => {
 
-  await axios.post(`/api/login`, values)
+  axios.post(`/login`, values)
     .then(response => {
-      if (onLoginSuccess(response)) {
-        console.log("success");
-        store.dispatch(login({ id:values.id, accessToken: response.data.access_token}));
-        navigate("/");
-      }
+      onLoginSuccess(response)
+      console.log("success");
+      store.dispatch(login({ id:values.id, accessToken: response.data.access_token}));
+      navigate("/");
     }) 
     . catch(error => {
       alert("로그인 실패!", error);
@@ -21,43 +20,37 @@ const loginDB = async (values, navigate) => {
 
 
 const loginCheckDB = () => {
-  const token = getCookie("refresh_token");
-  console.log("token: ", token);
-  axios.post( "/check", {  
-    headers: {
-      Authorization: `Bearer ${token}`
-    }},
-  )
+  axios.get( "/check")
     .then(response => {
-      console.log(response.data);
+      console.log("check: ", response.data);
     })
     .catch(error=>{
       console.log(error);
     })
 }
 
-const onSilentRefresh = (refreshToken) => {
-  axios.post('/silent-refresh', refreshToken)
-    .then((response) => onLoginSuccess(response))
+const onSilentRefresh = () => {
+  console.log("silentRefresh :", getCookie('refresh_token'))
+  axios.get('/silent-refresh', {
+      headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${getCookie('refresh_token')}`,
+    }}
+  )
+    .then(response => onLoginSuccess(response))
     .catch(error => {
       alert(error)
     });
 }
 
 const onLoginSuccess = response => {
-  if (response.status === 400) {
-    return false;
-  }
   console.log(response);
-  // const accessToken = response.data.access_token;
-  const refreshToken = response.data.refresh_token;
-  console.log("refreshToken: ", refreshToken);
-  // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  
+  const accessToken = response.data.access_token;
+  console.log(accessToken);
+  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
-  setCookie("refresh_token", refreshToken);
-
-  // setTimeout(onSilentRefresh(refreshToken), JWT_EXPIRRY_TIME - 60000);
-  return true;
+  // setTimeout(onSilentRefresh(response), JWT_EXPIRRY_TIME - 6000);
 }
 
 export { onLoginSuccess , loginDB, loginCheckDB };

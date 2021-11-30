@@ -10,9 +10,7 @@ def user_response_dto(user):
 def login_response_dto(result):
     if result == "login fail":
         return jsonify(result), 400
-    return jsonify({"access_token":result[0],
-                    "refresh_token":result[1]}
-                ), 200
+    return jsonify(result), 200
 
 def diary_respose_dto(result):
     if result is None:
