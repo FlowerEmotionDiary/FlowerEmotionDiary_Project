@@ -17,7 +17,7 @@ const LoginForm = () => {
         setPW('');
         if(allOk){
             try{
-                const response = await axios.post('http://127.0.0.1:5000//api/login', 
+                const response = await axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/login', 
                     {
                         email: email, password: pw 
                     });
