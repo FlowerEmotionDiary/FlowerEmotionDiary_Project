@@ -3,12 +3,14 @@
 import axios from "axios";
 import { useParams } from "react-router";
 import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
 
 const DiaryPage = () => {
     let { date } = useParams();
     // const path = `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`;
     // const diary = axios.get(path);
     const [data, setData] = useState(null);
+
     // const [loading, setLoading] = useState(false);
 
     const onClick = async () => {
@@ -17,6 +19,7 @@ const DiaryPage = () => {
                 `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`,
             );
             setData(response.data);
+            // setData(response.data.content);
         } catch (e) {
             console.log(e);
         }
@@ -46,10 +49,9 @@ const DiaryPage = () => {
 
     return (
         <div>
-            <div>
-                <button onClick={onClick}>getdata</button>
-            </div>
-            {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} />}
+
+            {data && <textarea name='title' rows={7} value={data.title} />}
+            {data && <textarea name='content' rows={7} value={data.content} />}
         </div>
     );
 
@@ -71,5 +73,14 @@ const DiaryPage = () => {
     //     </>
     // );
 }
+
+const HeadBlock = styled.div`
+`
+
+
+
+
+
+
 
 export default DiaryPage;
