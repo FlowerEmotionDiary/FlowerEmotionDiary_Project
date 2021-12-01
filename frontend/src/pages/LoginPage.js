@@ -3,21 +3,19 @@ import { useNavigate } from 'react-router';
 import LoginForm from "../components/login/loginForm";
 import TopTitle from '../components/login-topSection/TopTitle';
 import '../Login.scss';
-import { connect } from 'formik';
+import { connect } from 'react-redux';
 
 
-const LoginPage = () => {
+const LoginPage = ({user}) => {
+    const navigate = useNavigate();
+    console.log(user.is_login)
+    useEffect(() => {
+        if(user.is_login){
+            console.log("already logined!");
+            navigate(`/calendar`);
+        }
+    }, [])
 
-    // const navigate = useNavigate();
-    // console.log(Login)
-
-    // useEffect(() => {
-    //     if(isLogin){
-    //         console.log("already logined!");
-    //         navigate(`/calendar`);
-    //     }
-    // })
-    
     return (
         <div>
             <TopTitle />
@@ -28,5 +26,6 @@ const LoginPage = () => {
 
 function mapStateToProps(state, ownProps) {
     console.log(state);
+    return {user:state};
 }
-export default LoginPage;
+export default connect(mapStateToProps)(LoginPage);
