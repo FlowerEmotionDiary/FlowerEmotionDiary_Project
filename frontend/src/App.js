@@ -8,8 +8,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import store from "./redux/store";
 import { persistStore } from 'redux-persist';
 import {Provider} from "react-redux";
-import FirstPage from "./FirstPage";
-// import { Navigate } from "react-router";
+import FirstPage from "./pages/FirstPage";
+import { Navigate } from "react-router";
+import RegisterPage from "./pages/RegisterPage";
+import MoreAboutPage from "./pages/MoreAboutPage";
 
 const App = () => {
   const persistor = persistStore(store);
@@ -17,12 +19,15 @@ const App = () => {
   return (
     <Provider store={store}>
         <Routes>
+          <Route exact path="/" element={<FirstPage  />} />
           <Route exact path="/calendar" element={<CalendarPage />} />
           <Route exact path="/diary-write" element={<DiaryWritePage />} />
           <Route exact path="/diary/:date" element={<DiaryPage />} />
           <Route exact path="/login" element={<LoginPage  />} />
-          <Route exact path="/" element={<FirstPage  />} />
-          {/* <Route path="/" element={<Navigate to="/calendar" />} /> */}
+          <Route exact path='/register' element={<RegisterPage />} />
+          <Route exact path='/moreAbout' element={<MoreAboutPage />} />
+          {/* <Route path="/" element={<Navigate to="/register" />} /> */}
+
         </Routes>
     </Provider>
   );
