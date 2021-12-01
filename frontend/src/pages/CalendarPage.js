@@ -15,25 +15,32 @@ const CalendarPage =()=>{
   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
   // lastWeek에서 쓰인 조건문을 보면 1년은 52주가 존재하고 며칠이 더 있는데 이 부분을 달력은 53주로써 표현해야 합니다!! 
   // 하지만 moment()는 내년의 첫 주인 1로 표시하기 때문에 마지막 주가 1이라면 53으로 표시합니다.(2월이 29일이 아닌 년도의 12월 마지막 주의 경우 1을 리턴)
+  const feeling = ['happy', 'surprised', null, 'sad', 'anger', null, null, 'fear', 'hate', ,'happy', 'neutral']
 
-  const [todayColor, setTodayColor] = useState('')
+  const [todayColor, setTodayColor] = useState(feeling[0])
+
+  // date 를 받아서 페이지 이동하는 함수
+  const getDiary = async (date) => {
+    const diaryList = axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
+    console.log(diaryList.data)
+    // const diaryList = [{'content': 'contentwrite', 'date':'2021-10-02', 'title':'funday'},
+    // {'content': 'write', 'date':'2021-11-11', 'title':'sadday'},
+    // {'content': 'hello', 'date':'2021-12-02', 'title':'day'}]
+  
+    for (let i = 0; i < diaryList.length; i++) {
+      console.log("for??")
+      if (diaryList[i].date === date){
+        console.log("jbk: ", diaryList[i].date)
+        navigate(`/diary/${date}`);
+        return
+      }
+    }
+    navigate(`/diary-write?selectedDate=${date}`);
+  }
 
   const calendarArr=()=>{
 
     let result = [];
-
-    // date 를 받아서 페이지 이동하는 함수
-    const getDiary = async (date) => {
-      // 일기를 작성한 날이라면 다이어리 보여주는 페이지로 이동
-      try {
-        await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`);
-        navigate(`/diary/${date}`);
-      } 
-      // 일기를 작성한 날이 아니라면 다이어리 작성하는 페이지로 이동
-      catch (error) {
-        navigate(`/diary-write?selectedDate=${date}`);
-      }
-    }
 
     for ( let week = firstWeek; week <= lastWeek; week++) {
       result = result.concat(
@@ -89,12 +96,10 @@ const CalendarPage =()=>{
     )
   }
 
+  // 일기 목록을 불러오는 "diary print" 버튼을 눌렀을 때 실헹되는 함수
   const getCalendar = async() => {
     const response = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
     setCalendar(response.data);
-    // console.log("calendar: ", calendar)
-    console.log("res: ", response)
-    console.log("response.data: ", response.data[0])
   }
 
   return(
@@ -119,7 +124,7 @@ const CalendarPage =()=>{
             {calendarArr()}
           </tbody>
         </table>
-        <button className="diary-print" onClick={getCalendar}>diary print</button>
+        <button className="diary-print" onClick={getCalendar}>diary print</button> {/* 갑자기 이 부분이 안됩니다... */}
         <div>
         { 
           calendar?
