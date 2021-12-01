@@ -4,16 +4,13 @@ import DiaryWritePage from "./pages/DiaryWritePage";
 import DiaryPage from "./pages/DiaryPage";
 import LoginPage from "./pages/LoginPage"
 import React from "react";
-import store from "./redux/store";
-import {Provider} from "react-redux";
-import FirstPage from "./FirstPage";
+import FirstPage from "./pages/FirstPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 
 const App = () => {
 
   return (
-    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route exact path="/calendar" element={<CalendarPage />} />
@@ -24,7 +21,6 @@ const App = () => {
           {/* <Route path="/" element={<Navigate to="/calendar" />} /> */}
         </Routes>
       </BrowserRouter>
-    </Provider>
   );
 };
 

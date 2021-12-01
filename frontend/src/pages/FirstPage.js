@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import TopTitle from "./components/login-topSection/TopTitle";
+import TopTitle from "../components/login-topSection/TopTitle";
 
 const FirstPage = () => {
     // var navigate = useNavigate();
