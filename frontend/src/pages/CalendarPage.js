@@ -8,30 +8,22 @@ const CalendarPage =()=>{
   const navigate = useNavigate();
   const [calendar, setCalendar] = useState(false); 
   const [getMoment, setMoment]=useState(moment()); // moment() : 현재 날짜 값을 가져옵니다.
-  // console.log("moment: ", getMoment)
   const today = getMoment; // 현재 날짜
   const firstWeek = today.clone().startOf('month').week(); // startOf() : 현재 시간 기준 해당 달이 시작한지 어느 정도 시간(며칠)이 지났는지(2021-01-01 은 1, 6주 뒤면 2월5일이 되므로 endof('month)는 6)
   // endOf() : 현재 시간 기준 해당 달이 끝날때까지 어느 정도 시간(며칠)이 남았는지
   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
   // lastWeek에서 쓰인 조건문을 보면 1년은 52주가 존재하고 며칠이 더 있는데 이 부분을 달력은 53주로써 표현해야 합니다!! 
   // 하지만 moment()는 내년의 첫 주인 1로 표시하기 때문에 마지막 주가 1이라면 53으로 표시합니다.(2월이 29일이 아닌 년도의 12월 마지막 주의 경우 1을 리턴)
-  const feeling = ['happy', 'surprised', null, 'sad', 'anger', null, null, 'fear', 'hate', ,'happy', 'neutral']
+  const feeling = ['happy', 'surprised', null, 'sad', 'anger', null, null, 'fear', 'hate' ,'happy', 'neutral']
 
   const [todayColor, setTodayColor] = useState(feeling[0])
 
   // date 를 받아서 페이지 이동하는 함수
   const getDiary = async (date) => {
-    const diaryList = axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
-    console.log(diaryList.data)
-    // const diaryList = [{'content': 'contentwrite', 'date':'2021-10-02', 'title':'funday'},
-    // {'content': 'write', 'date':'2021-11-11', 'title':'sadday'},
-    // {'content': 'hello', 'date':'2021-12-02', 'title':'day'}]
-  
-    for (let i = 0; i < diaryList.length; i++) {
-      console.log("for??")
-      if (diaryList[i].date === date){
-        console.log("jbk: ", diaryList[i].date)
-        navigate(`/diary/${date}`);
+    const diaryList = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
+    for (let i = 0; i < diaryList.data.length; i++) {
+        if (diaryList.data[i].date === date){
+        navigate(`/diary?writtenDate=${date}`);
         return
       }
     }
