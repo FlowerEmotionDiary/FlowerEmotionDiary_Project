@@ -1,7 +1,7 @@
 import TopTitle from "../components/login-topSection/TopTitle";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useState } from "react";
-import axios from "axios";ㄴ
+import axios from "axios";
 
 const Register = () => {
     const [email, setEmail] = useState('');
