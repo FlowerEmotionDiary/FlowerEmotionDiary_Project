@@ -9,9 +9,9 @@ import store from "./redux/store";
 import { persistStore } from 'redux-persist';
 import {Provider} from "react-redux";
 import FirstPage from "./pages/FirstPage";
-// import { Navigate } from "react-router";
 import RegisterPage from "./pages/RegisterPage";
 import MoreAboutPage from "./pages/MoreAboutPage";
+import FlowerListPage from "./pages/FlowerListPage";
 
 const App = () => {
   const persistor = persistStore(store);
@@ -26,8 +26,7 @@ const App = () => {
           <Route exact path="/login" element={<LoginPage  />} />
           <Route exact path='/register' element={<RegisterPage />} />
           <Route exact path='/moreAbout' element={<MoreAboutPage />} />
-          {/* <Route path="/" element={<Navigate to="/register" />} /> */}
-
+          <Route exact path='/flowerList' element={<FlowerListPage />} />
         </Routes>
     </Provider>
   );
