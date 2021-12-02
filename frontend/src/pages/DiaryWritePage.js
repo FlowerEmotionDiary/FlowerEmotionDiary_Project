@@ -33,7 +33,8 @@ const DiaryWritePage = () => {
         axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary', diaryData).then((res) => {
         console.log(res)
         })
-        navigate(`/diary/${date}`);
+        console.log(diaryData)
+        navigate(`/diary?writtenDate=${date}`);
     }
 
     var navigate = useNavigate();
