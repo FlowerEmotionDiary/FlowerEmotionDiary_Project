@@ -9,7 +9,7 @@ import store from "./redux/store";
 import { persistStore } from 'redux-persist';
 import {Provider} from "react-redux";
 import FirstPage from "./pages/FirstPage";
-import { Navigate } from "react-router";
+// import { Navigate } from "react-router";
 import RegisterPage from "./pages/RegisterPage";
 import MoreAboutPage from "./pages/MoreAboutPage";
 
@@ -22,7 +22,7 @@ const App = () => {
           <Route exact path="/" element={<FirstPage  />} />
           <Route exact path="/calendar" element={<CalendarPage />} />
           <Route exact path="/diary-write" element={<DiaryWritePage />} />
-          <Route exact path="/diary/:date" element={<DiaryPage />} />
+          <Route exact path="/diary" element={<DiaryPage />} />
           <Route exact path="/login" element={<LoginPage  />} />
           <Route exact path='/register' element={<RegisterPage />} />
           <Route exact path='/moreAbout' element={<MoreAboutPage />} />
@@ -34,5 +34,3 @@ const App = () => {
 };
 
 export default App;
-
-
