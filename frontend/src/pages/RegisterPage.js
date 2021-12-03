@@ -1,4 +1,4 @@
-import TopTitle from "./components/login-topSection/TopTitle";
+import TopTitle from "../components/login-topSection/TopTitle";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useState } from "react";
 import axios from "axios";
