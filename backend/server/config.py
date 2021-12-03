@@ -7,6 +7,9 @@ SESSION_TYPE = 'filesystem'
 
 SECRET_KEY = secret_key
 
+# Access-Control-Allow-Credentials 옵션?
+
+
 # jwt
 JWT_SECRET_KEY = jwt_secret_key
 JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
