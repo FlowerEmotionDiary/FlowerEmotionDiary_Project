@@ -41,11 +41,12 @@ const DiaryWritePage = () => {
     
     return (
         <>
-        <TopTitle />
         <div className="Diary">
             <Form onSubmit={SubmitDiary}>
                 <FormField>
-                    제목 : <Input
+                    {/* 제목 : <Input */}
+                    제목 : <br />
+                    <textarea
                         className="DiaryTitle"
                         type="text"
                         name="DiaryTitle"
@@ -56,7 +57,7 @@ const DiaryWritePage = () => {
                                 setTitle(e.target.value)
                             }
                         }
-                        style={{width : "700px", resize : "none"}}
+                        style={{width : "400px", height: "15px", resize : "none"}}
                     />
                 </FormField>
                 <FormField>
@@ -65,7 +66,7 @@ const DiaryWritePage = () => {
                     name="date" 
                     value={date} 
                     onChange={handleDateChange}
-                    style={{width : "700px", resize : "none"}} 
+                    style={{width : "300px", resize : "none"}} 
                     />
                 </FormField>
                 <FormField>
@@ -75,7 +76,7 @@ const DiaryWritePage = () => {
                     value={content} 
                     placeholder="내용을 입력하세요" 
                     onChange={handleChange} 
-                    style={{width : "700px", height : "500px", resize : "none"}} 
+                    style={{width : "430px", height : "400px", resize : "none"}} 
                     />
                 </FormField>
                 <FormField>
