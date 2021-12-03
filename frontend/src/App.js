@@ -2,9 +2,10 @@ import "./App.css";
 import CalendarPage from "./pages/CalendarPage";
 import DiaryWritePage from "./pages/DiaryWritePage";
 import DiaryPage from "./pages/DiaryPage";
-import LoginPage from "./pages/LoginPage"
+import LoginPage from "./login/LoginPage"
 import React from "react";
 import FirstPage from "./pages/FirstPage";
+import Register from "./Register";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import store from "./redux/store";
@@ -40,6 +41,7 @@ const App = () => {
       <Route exact path='/moreAbout' element={<ShowMoreAbout />} />
       <Route exact path="/diary" element={<ShowDiaryPage />} />
     </BrowserRouter>
+
   );
 };
 

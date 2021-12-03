@@ -8,8 +8,8 @@ const Register = () => {
     const [pw,  setPW] = useState('');
     const [nick, setNick] = useState('');
     const onClick = () => {
-        const data = {email: email, password: pw, nickname: nick};
-        axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/register', data).then((res) => {
+        const data = {email: email, password: pw, name: nick};
+        axios.post('/register', data).then((res) => {
             console.log(res)
         })
     };

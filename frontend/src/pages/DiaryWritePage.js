@@ -30,7 +30,7 @@ const DiaryWritePage = () => {
     const SubmitDiary = () => {
         const diaryData = {title:title, content: content, date: date};
         console.log("diary-data-date: ", date)
-        axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary', diaryData).then((res) => {
+        axios.post('/diary', diaryData).then((res) => {
         console.log(res)
         })
         console.log(diaryData)
