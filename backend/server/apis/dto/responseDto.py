@@ -12,12 +12,13 @@ def login_response_dto(result):
         return jsonify(result), 400
     return jsonify({"access_token":result}), 200
 
-def diary_respose_dto(result):
-    if result is None:
+def diary_response_dto(result):
+    if result == "":
         return 'failed', 400
     return jsonify({
         "title":result.title,
-        "content":result.content
+        "content":result.content,
+        "date": result.date
         }), 200
 
 def diaries_response_dto(result):
