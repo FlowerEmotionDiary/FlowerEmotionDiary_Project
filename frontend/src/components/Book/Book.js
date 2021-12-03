@@ -1,6 +1,5 @@
 import "./Book.scss";
 import NavigationBar from "../navBar/NavigationBar";
-import CalendarPage from "../../pages/CalendarPage";
 
 const Book = props => {
     return (

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import TopTitle from "../components/login-topSection/TopTitle";
 import { connect } from "react-redux";
 import { logout } from "../redux_store/userSlice";
 import axios from "axios";
@@ -9,7 +8,6 @@ const FirstPage = ({Login, onBtnClick}) => {
     console.log(Login.Login.is_login)
     return(
         <>
-        <TopTitle />
         <div className="intro">
             나의 하루를 적어보세요.<br />
             당신의 감정을 분석해드립니다.<br />

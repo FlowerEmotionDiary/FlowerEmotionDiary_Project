@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router';
 import LoginForm from "./loginForm";
-import TopTitle from '../components/login-topSection/TopTitle';
 import '../Login.scss';
 import { connect } from 'react-redux';
 
@@ -18,7 +17,6 @@ const LoginPage = ({Login}) => {
 
     return (
         <div>
-            <TopTitle />
             <LoginForm />
         </div>
     );
