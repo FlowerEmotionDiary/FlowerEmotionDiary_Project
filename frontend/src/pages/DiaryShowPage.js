@@ -1,2 +1,0 @@
-import getCalendar from "./CalendarPage";
-

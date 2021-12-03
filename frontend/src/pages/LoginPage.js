@@ -1,30 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router';
-import { useSelector} from "react-redux";
 import LoginForm from "../components/login/loginForm";
 import TopTitle from '../components/login-topSection/TopTitle';
 import '../Login.scss';
+import { connect } from 'react-redux';
 
 
-const LoginPage = () => {
-
+const LoginPage = ({user}) => {
     const navigate = useNavigate();
-    const isLogin = useSelector((state) => state.user.isLogined);
-    const user_id = useSelector((state) => state.user.user_id);
-
+    console.log(user.is_login)
     useEffect(() => {
-        if(isLogin){
+        if(user.is_login){
             console.log("already logined!");
             navigate(`/calendar`);
         }
-    })
+    }, [])
+
     return (
         <div>
             <TopTitle />
             <LoginForm />
         </div>
     );
-
 }
 
-export default LoginPage;
+function mapStateToProps(state, ownProps) {
+    console.log(state);
+    return {user:state};
+}
+export default connect(mapStateToProps)(LoginPage);

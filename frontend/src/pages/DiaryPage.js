@@ -3,84 +3,63 @@
 import axios from "axios";
 import { useParams } from "react-router";
 import React, { useState, useEffect } from "react";
-import styled from 'styled-components';
+import "./DiaryPage.scss";
+
 
 const DiaryPage = () => {
     let { date } = useParams();
     // const path = `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`;
     // const diary = axios.get(path);
-    const [data, setData] = useState(null);
+    const [fulldata, setFulldata] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [year, setYear] = useState(null);
+    const [month, setMonth] = useState(null);
+    const [day, setDay] = useState(null);
 
-    // const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setError(null);
+                setFulldata(null);
+                setLoading(true);
+                const response = await axios.get(
+                    `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`,
+                    // 'https://jsonplaceholder.typicode.com/todos/1'
+                );
 
-    const onClick = async () => {
-        try {
-            const response = await axios.get(
-                `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`,
-            );
-            setData(response.data);
-            // setData(response.data.content);
-        } catch (e) {
-            console.log(e);
-        }
-    };
+                setYear(date.split('-')[0])
+                setMonth(date.split('-')[1])
+                setDay(date.split('-')[2])
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         // setLoading(true);
-    //         try {
-    //             const res = await axios.get(
-    //                 `http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`,
-    //             );
-    //             setData(res.data);
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //         // setLoading(false);
-    //     };
-    //     fetchData();
-    // });
+                setFulldata(response.data);
+            } catch (e) {
+                setError(e);
+            }
+            setLoading(false);
 
-    // return (
-    //     <>
-    //     {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />}
-    //     </>
-    // );
+
+        };
+        fetchData();
+    }, [date]);
+
+    const onClick = () => {
+
+
+    }
+
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러 발생</div>;
 
     return (
         <div>
-
-            {data && <textarea name='title' rows={7} value={data.title} />}
-            {data && <textarea name='content' rows={7} value={data.content} />}
+            <h3><p id='date'>{year}년 {month}월 {day}일</p></h3>
+            <h1>{fulldata && <p id='diarytitle'>{fulldata.title}</p>}</h1>
+            <h3>{fulldata && <p id='diarycontent'>{fulldata.content}</p>}</h3>
+            <button id='button' onClick={onClick}>수정</button>
+            <button id='button' onClick={onClick}>삭제</button>
         </div>
     );
-
-
-    // axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`).then((res) => {
-    //     setData(res.data);
-    // }).catch((error) => {
-    //     console.log(error)
-    // })
-    // return (
-    //     <>
-    //     <div className="date">
-    //        {/* {date} */}
-    //        {date.slice(0,4)}년 {date.slice(5,7)}월 {date.slice(8,10)}일
-    //     </div>
-    //     {/* <div className="diaryContent"> */}
-    //         {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />}
-    //     {/* </div> */}
-    //     </>
-    // );
 }
-
-const HeadBlock = styled.div`
-`
-
-
-
-
-
-
 
 export default DiaryPage;

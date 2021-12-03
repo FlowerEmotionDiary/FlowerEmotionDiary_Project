@@ -1,65 +1,84 @@
-import React, {useState, useEffect} from "react";
-import { useDispatch} from "react-redux";
+import React from "react";
 import { useNavigate } from 'react-router';
-import { login } from "../../redux/action";
-import axios from 'axios';
+import { Formik } from "formik";
+import axios from "axios";
+import store, { login, logout } from "../../redux_store/userSlice";
+import { connect } from "react-redux";
+const JWT_EXPIRRY_TIME = 60 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
 
 const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [pw,  setPW] = useState('');
-    const [validation, setValidation] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [allOk, setAllOk] = useState(false);
+	const navigate = useNavigate();
+	const loginDB = (values, navigate) => {
 
-    const loginHandler = async () => {
-        setEmail('');
-        setPW('');
-        if(allOk){
-            try{
-                const response = await axios.post('http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/login', 
-                    {
-                        email: email, password: pw 
-                    });
-                
-                    dispatch(login(response.data.access_token, response.data.user_id));
-                    console.log(response.data.access_token);
-                    navigate('/calendar');
-            } catch(error) {
-                console.log('try again');
-            }
-        } else {
-            console.log('try again');
-        }
-    };
+		axios.post(`/api/login`, values)
+		  .then(response => {
+			onLoginSuccess(response)
+			console.log("success");
+			store.dispatch(login({ id:values.id, accessToken: response.data.access_token}));
+			loginCheckDB();
+			navigate("/");
+		  }) 
+		  . catch(error => {
+			alert("로그인 실패!", error);
+		  })
+	  }
+	  const onLoginSuccess = response => {
+		console.log(response);
+		
+		const accessToken = response.data.access_token;
+		console.log(accessToken);
+		axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+	  
+		// setTimeout(onSilentRefresh(response), JWT_EXPIRRY_TIME - 6000);
+	  }
+	
+	  const loginCheckDB = () => {
+		axios.get( "/api/check")
+		  .then(response => {
+			console.log("check: ", response.data);
+		  })
+		  .catch(error=>{
+			console.log(error);
+		  })
+	  }
 
-    // email과 pw가 전부 입력되었는지 확인.
-    useEffect(() => {
-        if(email !== '' && pw !== '') setAllOk(true);
-        else setAllOk(false);
-    }, [email, pw]);
 
-    return (
-        <div>
-            <input 
-                type="text" 
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
-                placeholder="이메일을 입력하세요." />
-            <input
-                type="text"
-                value={pw}
-                onChange={
-                    (e) => {
-                        setPW(e.target.value)
-                    }
-                }
-                placeholder="  비밀번호를 입력하세요."
-            />
-            <button type="submit" onClick={loginHandler}>LOGIN</button>
-        </div>
-    )
+	return (
+		<div>
+			<Formik 
+				initialValues={{ email: "", password: ""}}
+				// validationSchema={}
+				onSubmit={(values, {setSubmitting}) => {
+					console.log(values);
+					loginDB(values, navigate);
+					setSubmitting(false);
+				}}>
+				{formik => (
+					<form onSubmit={formik.handleSubmit}>
+
+						<label htmlFor="email">Email</label>
+						<input id="email" typ="eamil" {...formik.getFieldProps('email')} />
+						{ formik.touched.email && formik.errors.email ? 
+							(<div>{formik.errors.email}</div>) : null }
+
+						<label htmlFor="password">Password</label>
+						<input id="password" type="password" {...formik.getFieldProps('password')}/>
+						{ formik.touched.password && formik.errors.password ? 
+							(<div>{formik.errors.password}</div>) : null }
+
+						<button type="submit">Login</button>
+
+					</form>
+				)}
+			</Formik>
+		</div>
+	)
 
 }
 
-export default LoginForm;
+function mapStateToProps(state, ownProps) {
+    console.log(state);
+	return {};
+}
+
+export default connect(mapStateToProps) (LoginForm);
