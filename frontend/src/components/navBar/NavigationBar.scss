@@ -1,7 +1,7 @@
 .navigation {
 
   // *************** 메뉴바 전체 위치를 이동시키고 싶으면 이 부분을 수정하면 됩니다! ***************
-  margin-top: 30px;
+  margin-top: 50px;
   margin-left: 50px;
   // ***********************************************************8****************
 
@@ -11,7 +11,7 @@
       border: none;
       width: 100px;
       height: 30px;
-      border-left: 15px solid white;
+      border-left: 15px solid #e1e3ca;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
       line-height: 0; // line-height 속성은 텍스트의 줄 간격을 설정합니다. ( 참고 : http://tcpschool.com/css/css_basic_text )
@@ -19,6 +19,10 @@
       letter-spacing: 2px;
       font-size: 12px;
       text-align: center;
+  }
+
+  .menuBar:hover{
+    background-color: #fdc147;
   }
 
   // 책갈피 사이 간격
