@@ -26,7 +26,7 @@ const CalendarPage =()=>{
     const getDiary = async (date) => {
       // 일기를 작성한 날이라면 다이어리 보여주는 페이지로 이동
       try {
-        await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diary/${date}`);
+        await axios.get(`/diary/${date}`);
         navigate(`/diary/${date}`);
       } 
       // 일기를 작성한 날이 아니라면 다이어리 작성하는 페이지로 이동
@@ -90,7 +90,7 @@ const CalendarPage =()=>{
   }
 
   const getCalendar = async() => {
-    const response = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
+    const response = await axios.get(`/diaries`);
     setCalendar(response.data);
     // console.log("calendar: ", calendar)
     console.log("res: ", response)
@@ -127,6 +127,16 @@ const CalendarPage =()=>{
           : null
         }
         </div>
+        
+        <button onClick={() => {
+            axios.get( "/check")
+            .then(response => {
+                console.log("check: ", response.data);
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+	    }}>유저체크</button>
     </div>
   );
 }
