@@ -2,16 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from "./redux_store/userSlice";
+// import store from "./redux_store/userSlice";
 import {Provider} from "react-redux";
 import axios from "axios";
+import { PersistGate } from 'redux-persist/integration/react';
+import configureStore from './store';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://127.0.0.1:5000/";
+axios.defaults.baseURL = "http://127.0.0.1:5000/api/";
+
+const { store, persistor } = configureStore();
 
 ReactDOM.render(
   <Provider store={ store }>
+    <PersistGate loading={null} persistor={persistor}>
       <App />
+    </PersistGate>
   </Provider>, 
 document.getElementById('root')
 );

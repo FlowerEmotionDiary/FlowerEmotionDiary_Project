@@ -4,20 +4,18 @@ import { configureStore, createSlice} from "@reduxjs/toolkit";
 
 const Login = createSlice({
     name: "LoginReducer",
-    initialState: { user: false, accessToken: false, is_login: false},
+    initialState: { user: "", is_login: false},
     reducers: {
         login: (state, action) => {
             return { 
-                user:action.payload.id, 
-                accessToken:action.payload.accessToken ,
+                user:action.payload.email, 
                 is_login: true
             };
         },
         logout: () => {
             // deleteCookie("is_login")
             return { 
-                user:false, 
-                accessToken:false ,
+                user:"", 
                 is_login: false
             };
         }
@@ -27,4 +25,4 @@ const Login = createSlice({
 const store = configureStore({ reducer: Login.reducer});
 
 export const { login, logout } = Login.actions;
-export default store;
+export default Login.reducer;

@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router';
-import LoginForm from "../components/login/loginForm";
+import LoginForm from "./loginForm";
 import TopTitle from '../components/login-topSection/TopTitle';
 import '../Login.scss';
 import { connect } from 'react-redux';
 
 
-const LoginPage = ({user}) => {
+const LoginPage = ({Login}) => {
     const navigate = useNavigate();
-    console.log(user.is_login)
+    console.log(Login)
     useEffect(() => {
-        if(user.is_login){
+        if(Login.Login.is_login){
             console.log("already logined!");
             navigate(`/calendar`);
         }
@@ -25,7 +25,6 @@ const LoginPage = ({user}) => {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log(state);
-    return {user:state};
+    return {Login:state};
 }
 export default connect(mapStateToProps)(LoginPage);
