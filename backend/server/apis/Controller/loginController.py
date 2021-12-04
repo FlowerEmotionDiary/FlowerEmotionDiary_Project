@@ -24,7 +24,7 @@ def silent_refresh():
 
 # 토큰 보냈을 때 유저 정보 체크
 @login_bp.route("/check", methods=['GET'])
-@jwt_required(refresh=True)
+@jwt_required()
 def check():
     user = check_user()
     return user_response_dto(user)
