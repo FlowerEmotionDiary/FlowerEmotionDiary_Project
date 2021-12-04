@@ -13,17 +13,26 @@
     src: url('../../fonts/Hahmlet-Medium.ttf')
 }
 
+@font-face{
+    font-family: 'hamExtraL';
+    src: url('../../fonts/Hahmlet-ExtraLight.ttf')
+}
+
 #diarytitle, #date{
-    font-family: 'snowfont';
-    font-size: larger;
-    margin-left: 100px;
-    margin-top: 80px;
+    font-family: 'hamMedium';
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display:flex;
 }
 
 #diarycontent{
-    font-family: 'snowfont';
-    font-size: larger;
-    margin-left: 100px;
+    font-family: 'hamExtraL';
+    margin-left: 5%;
+    margin-bottom: 55%;
+    margin-right: 10%;
+    margin-top: 10%;
+    display:flex;
 }
 
 
@@ -33,26 +42,51 @@
     border-radius: 7px;
     border-style:none;
     box-sizing:border-box;
-    color: black;
-    font-family: 'hamMedium';
+    color: white;
+    font-family: 'hamLight';
     font-size: 20px;
     height: 35px;
-    line-height: 20px;
-    margin-top: 250px;
-    margin-left: 100px;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 5%;
     outline: none;
-    padding: 0px 13px;
-    position: relative;
+    padding: 0px 8px;
     text-align: center;
+    padding-bottom: 2px;
     text-decoration: none;
     transition: color 100ms;
     vertical-align: baseline;
     user-select: none;
     -webkit-user-select: none;
-    touch-action: manipulation;
+    // touch-action: manipulation;
+    width: auto;
+    height: auto;
+
 }
 
-.button:hover,
-.button:focus {
-  background-color: #F082AC;
+#button2{
+    background-color: #FAD56F;
+    border-radius: 7px;
+    border-style:none;
+    box-sizing:border-box;
+    color: white;
+    font-family: 'hamLight';
+    font-size: 20px;
+    height: 35px;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 5%;
+    outline: none;
+    padding: 0px 8px;
+    text-align: center;
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    // touch-action: manipulation;
+    width: auto;
+    height: auto;
+
 }

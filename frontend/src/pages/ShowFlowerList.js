@@ -1,11 +1,11 @@
 import FlowerList from "../components/FlowerList";
-import Book from "../components/book/Book";
+import Book from "../components/Book/Book";
 
 const ShowFlowerList = () => {
     return (
-    <>
-    <Book left={<FlowerList />} right={<FlowerList />} />
-    </>
+        <>
+            <Book left={<FlowerList />} right={<FlowerList />} />
+        </>
     );
 }
 
