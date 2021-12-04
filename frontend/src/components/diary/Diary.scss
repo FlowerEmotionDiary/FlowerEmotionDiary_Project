@@ -1,0 +1,58 @@
+@font-face{
+    font-family: 'snowfont';
+    src: url('../../fonts/SF함박눈-TTF.ttf')
+}
+
+@font-face{
+    font-family: 'hamLight';
+    src: url('../../fonts/Hahmlet-Light.ttf')
+}
+
+@font-face{
+    font-family: 'hamMedium';
+    src: url('../../fonts/Hahmlet-Medium.ttf')
+}
+
+#diarytitle, #date{
+    font-family: 'snowfont';
+    font-size: larger;
+    margin-left: 100px;
+    margin-top: 80px;
+}
+
+#diarycontent{
+    font-family: 'snowfont';
+    font-size: larger;
+    margin-left: 100px;
+}
+
+
+
+#button{
+    background-color: #FAD56F;
+    border-radius: 7px;
+    border-style:none;
+    box-sizing:border-box;
+    color: black;
+    font-family: 'hamMedium';
+    font-size: 20px;
+    height: 35px;
+    line-height: 20px;
+    margin-top: 250px;
+    margin-left: 100px;
+    outline: none;
+    padding: 0px 13px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #F082AC;
+}

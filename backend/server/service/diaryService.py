@@ -30,7 +30,7 @@ def diary_list_service(user_id):
             {
                 "title":diary.title,
                 "content":diary.content,
-                "date":diary.date
+                "date":diary.date.strftime("%Y-%m-%d")
             }
         )
 
