@@ -1,12 +1,12 @@
 import DiaryWritePage from "../components/diary/DiaryWritePage";
 import FlowerList from "../components/FlowerList";
-import Book from "../components/book/Book";
+import Book from "../components/Book/Book";
 
 const ShowDiaryWrite = () => {
     return (
-    <>
-    <Book left={<DiaryWritePage />} right={<FlowerList />} />
-    </>
+        <>
+            <Book left={<DiaryWritePage />} right={<FlowerList />} />
+        </>
     );
 }
 

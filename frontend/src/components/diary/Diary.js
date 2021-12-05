@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useParams } from "react-router";
 import React, { useState, useEffect } from "react";
 import "./Diary.scss";
 
@@ -56,11 +55,11 @@ const Diary = () => {
 
     return (
         <div>
-            <h3><p id='date'>{year}년 {month}월 {day}일</p></h3>
-            <h1>{fulldata && <p id='diarytitle'>{fulldata.title}</p>}</h1>
-            <h3>{fulldata && <p id='diarycontent'>{fulldata.content}</p>}</h3>
+            <h4><p id='date'>{year}년 {month}월 {day}일</p></h4>
+            <h2>{fulldata && <p id='diarytitle'>{fulldata.title}</p>}</h2>
+            <h4>{fulldata && <p id='diarycontent'>{fulldata.content}</p>}</h4>
             <button id='button' onClick={onClick}>수정</button>
-            <button id='button' onClick={onClick}>삭제</button>
+            <button id='button2' onClick={onClick}>삭제</button>
         </div>
     );
 }
