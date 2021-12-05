@@ -1,4 +1,5 @@
 from domain.models.diary import Diary, db
+from datetime import datetime
 
 # 새로운 일기 생성
 def new_diary(date, title, content, user_id, emotion):
@@ -49,6 +50,15 @@ def update_diary(user_id, diary, emotion):
         return True
     else:
         return False
+
+def diaries_month(user_id):
+    today = datetime.today()
+    diaries = Diary.query.filter_by(user_id=user_id).all()
+    result = []
+    for diary in diaries:
+        if diary.date.month == today.month and diary.date.year == today.year:
+            result.append(diary)
+    return result
 
 def all_diaries(user_id):
     result = Diary.query.filter_by(user_id=user_id).all()
