@@ -1,0 +1,68 @@
+@font-face{
+    font-family: 'hamLight';
+    src: url('../../fonts/Hahmlet-Light.ttf')
+}
+
+@font-face{
+    font-family: 'hamMedium';
+    src: url('../../fonts/Hahmlet-Medium.ttf')
+}
+
+@font-face{
+    font-family: 'hamExtraL';
+    src: url('../../fonts/Hahmlet-ExtraLight.ttf')
+}
+
+
+
+.Diary{
+    font-family: 'hamMedium';
+    margin-top: 15%;
+    margin-left: 3%;
+    font-size: 20px;
+
+    .DiaryTitle{
+        font-family: 'hamLight';
+        padding: 1px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        border: none;
+        display: block;
+        width: 100%;
+        height: 56px;
+        font-size: 20px;
+    }
+
+    #date{
+        font-family: 'hamLight';
+        padding: 1px;
+        margin-bottom: 5px;
+        margin-top: 0px;
+        border: none;
+        display: block;
+        width: 100%;
+        height: 35px;
+        font-size: 15px;
+        margin-left: 0px;
+    }
+
+    .DiaryContent{
+        font-family: 'hamLight';
+        padding: 1px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        border: none;
+        display: block;
+        width: 100%;
+        height: 56px;
+        font-size: 15px;
+    }
+
+
+
+    .DiaryWriteButton{
+        font-family: 'hamMedium';
+    }
+    
+
+}
