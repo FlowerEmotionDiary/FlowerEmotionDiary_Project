@@ -10,7 +10,7 @@ import configureStore from './store';
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = "http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api";
-
+// axios.defaults.baseURL = "http://127.0.0.1:5000/api";
 const { store, persistor } = configureStore();
 
 ReactDOM.render(

@@ -24,5 +24,7 @@ def diary_response_dto(result):
 def diaries_response_dto(result):
     if result:
         return jsonify(result), 200
+    elif result == []:
+        return jsonify(result), 200
     else:
-        return 'failed', 400
+        return "failed", 400
