@@ -7,7 +7,7 @@ def diary_post_service(user_id, diary):
 
     # 작성한 다이어리가 없다면 새로 생성
     # emotion = function.split_send_data(diary['content'])
-    emotion = {'공포' : 0, '놀람': 0, '분노': 0, '슬픔': 0, '중립': 0, '행복': 0, '혐오': 0}
+    emotion = {'공포' : 0, '놀람': 1, '분노': 2, '슬픔': 3, '중립': 4, '행복': 5, '혐오': 6}
     if not check_diary:
         diary = new_diary(
             user_id=user_id,
@@ -31,7 +31,7 @@ def diary_delete_service(user_id, date):
 # 일기 수정 서비스
 def diary_update_service(user_id, diary):
     # emotion = function.split_send_data(diary['content'])
-    emotion = {'공포' : 1, '놀람': 1, '분노': 1, '슬픔': 1, '중립': 1, '행복': 1, '혐오': 1}
+    emotion = {'공포' : 6, '놀람': 5, '분노': 4, '슬픔': 3, '중립': 2, '행복': 1, '혐오': 0}
 
     
     if update_diary(

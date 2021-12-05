@@ -30,7 +30,7 @@ def diary_delete(date):
 @jwt_required()
 def diary_update():
     user_id = get_jwt_identity()
-    diary = diary_post_request_dto(request.json)
+    diary = diary_request_dto(request.json)
 
     result = diary_update_service(user_id, diary)
     return jsonify(result)
