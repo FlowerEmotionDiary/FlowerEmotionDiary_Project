@@ -17,8 +17,8 @@ class Diary(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     
-    def __init__(self, date, title, content, user_id):
-        self.date = date
-        self.title = title
-        self.content = content
-        self.user_id = user_id
+    # def __init__(self, date, title, content, user_id):
+    #     self.date = date
+    #     self.title = title
+    #     self.content = content
+    #     self.user_id = user_id
