@@ -1,0 +1,68 @@
+.background {
+    width: 1500px;
+    height: 690px;
+    background-color: #e1e3ca;
+    padding-top: 30px;
+    padding-left: 70px;
+    display:flex;
+
+    .bookmark {
+        float: left;
+    }
+
+    .book {
+        float: left;
+        margin-top: 30px;
+        margin-left: 0px;
+        background-color: white;
+        width: 1000px;
+        height: 600px;
+        border-radius: 5px;
+        border-left: 5px solid #9B9191;
+        border-right: 5px solid #9B9191;
+
+        .pageBrighter {
+            width: 5px;
+            // width: 15px;
+            height: 600px;
+            // border-radius: 5px 0px 0px 5px;
+            background-color: #c4c4c4;
+            // background: linear-gradient(to right, #a89d9d, #eee);
+        }
+
+        .pageBrightest {
+            width: 5px;
+            height: 600px;
+            background-color: #e2e2e2;
+        }
+
+        .leftpage {
+            float: left; // 두 div를 나란히 옆에 붙이는 방법( 참고 : https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html )
+            margin-top: 0px;
+            margin-left: 0px;
+            background-color: white;
+            width: 489px;
+            height: 600px;
+            border-right: 0.05px solid gray;
+            // linear-gradient ( 참고 : https://www.codingfactory.net/10838 )
+            // background: linear-gradient(to left, gray, rgb(140,140,140), rgb(153, 153, 153), rgb(165,165,165), rgb(180,180,180), rgb(195,195,195), rgb(209, 209, 209), #eee);
+            .in {
+                margin-left: 30px;
+                margin-top: 30px;
+            }
+        }
+        
+        .rightpage {
+            float: left;
+            margin-top: 0px;
+            margin-left: 0px;
+            background-color: white;
+            width: 489px;
+            height: 600px;
+            .in {
+                margin-left: 30px;
+                margin-top: 30px;
+            }
+        }
+    }
+}
