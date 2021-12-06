@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import "./FlowerList.scss";
 
 const FlowerList = () => {
     const [count, setCount] = useState(0);
@@ -16,11 +17,14 @@ const FlowerList = () => {
     }, []);
 
     return( 
-        <>
-        <h1>Flower List</h1>
-        <p>{count}</p>
-        <p>{emotion}</p>
-        </>
+        <div id='container'>
+            <img id='background' 
+                src={`${process.env.PUBLIC_URL}/images/background.png`}>
+            </img>
+            <img id='flower' 
+                src={`${process.env.PUBLIC_URL}/images/꽃-${emotion}.png`}>
+            </img>
+        </div>
     );
 }
 
