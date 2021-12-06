@@ -53,3 +53,4 @@ def diary_list():
     user_id = get_jwt_identity()
     result = diary_list_service(user_id)
     return diaries_response_dto(result)
+

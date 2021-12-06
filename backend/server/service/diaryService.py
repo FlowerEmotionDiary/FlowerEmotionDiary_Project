@@ -58,8 +58,23 @@ def diary_list_service(user_id):
             {
                 "title":diary.title,
                 "content":diary.content,
-                "date":diary.date.strftime("%Y-%m-%d")
+                "date":diary.date.strftime("%Y-%m-%d"),
+                "emotion":max_emotion(diary)
             }
         )
 
     return result
+
+# 일기장 감정 분석 결과 중 가장 수치가 큰 감정
+def max_emotion(diary):
+    emotion = {
+        '공포' : diary.fear, 
+        '놀람': diary.surprised, 
+        '분노': diary.anger, 
+        '슬픔': diary.sad, 
+        '중립': diary.neutral, 
+        '행복': diary.happy, 
+        '혐오': diary.aversion
+        }
+    return max(emotion.keys(), key=(lambda k:emotion[k]))
+
