@@ -10,6 +10,9 @@
 
   // 책갈피 디자인
   .menuBar {
+      display: block;
+      position: relative;
+
       background-color: #FECD6E;
       border: none;
       width: 95px;
@@ -17,11 +20,15 @@
       border-left: 15px solid #e1e3ca;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      line-height: 0; // line-height 속성은 텍스트의 줄 간격을 설정합니다. ( 참고 : http://tcpschool.com/css/css_basic_text )
-      color: white;
-      letter-spacing: 2px;
-      font-size: 12px;
-      text-align: center;
+      line-height: 0; // line-height 속성은 텍스트의 줄 간격을 설정합니다. ( 참고 : http://tcpschool.com/css/css_basic_text )  
+
+      .navlink {
+        text-decoration: none;
+        color: white;
+        letter-spacing: 2px;
+        font-size: 12px;
+        text-align: center;
+      }
   }
 
   .menuBar:hover{
