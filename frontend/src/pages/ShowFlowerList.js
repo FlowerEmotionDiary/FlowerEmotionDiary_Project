@@ -1,4 +1,4 @@
-import FlowerList from "../components/FlowerList";
+import FlowerList from "../components/flowerList/FlowerList";
 import Book from "../components/Book/Book";
 
 const ShowFlowerList = () => {
