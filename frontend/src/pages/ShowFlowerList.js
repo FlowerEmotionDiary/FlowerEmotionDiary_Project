@@ -1,12 +1,13 @@
 import FlowerList from "../components/flowerList/FlowerList";
 import Book from "../components/Book/Book";
-import Chart from '../components/chart/Chart';
+import DoughnutChart from '../components/chart/DoughnutChart';
+import LineChart from '../components/chart/LineChart';
 
 
 const ShowFlowerList = () => {
     return (
         <>
-            <Book left={<FlowerList />} right={<Chart />} />
+            <Book left={<FlowerList />} right={<div><LineChart /><DoughnutChart /></div>} />
         </>
     );
 }

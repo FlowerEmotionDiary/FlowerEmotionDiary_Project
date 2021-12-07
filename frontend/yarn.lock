@@ -1289,7 +1289,7 @@
 
 "@fullpage/react-fullpage@^0.1.19":
   version "0.1.19"
-  resolved "https://registry.npmjs.org/@fullpage/react-fullpage/-/react-fullpage-0.1.19.tgz"
+  resolved "https://registry.yarnpkg.com/@fullpage/react-fullpage/-/react-fullpage-0.1.19.tgz#770ecfc96475900007ce1c29376da7fa11fb26a8"
   integrity sha512-URgt+91lw/Ac4R+VXqquY97w2U+QaQhHIcO7V+HHesPHYA8kCfjMb3VZ+n7RFz05FdpIx3gLV9TZHOYS9p43Kg==
   dependencies:
     "@babel/polyfill" "^7.2.5"
