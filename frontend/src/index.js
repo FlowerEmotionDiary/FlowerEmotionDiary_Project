@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import axios from "axios";
 import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from './store';
+import "normalize.css";
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = "http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api";

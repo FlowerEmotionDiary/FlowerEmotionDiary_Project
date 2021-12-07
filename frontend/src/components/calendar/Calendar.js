@@ -3,8 +3,9 @@ import {useState} from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./Calendar.scss";
 
-const Calendar =()=>{
+const CalendarPage =()=>{
   const navigate = useNavigate();
   const [calendar, setCalendar] = useState(false); 
   const [getMoment, setMoment]=useState(moment()); // moment() : 현재 날짜 값을 가져옵니다.
@@ -14,14 +15,12 @@ const Calendar =()=>{
   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
   // lastWeek에서 쓰인 조건문을 보면 1년은 52주가 존재하고 며칠이 더 있는데 이 부분을 달력은 53주로써 표현해야 합니다!! 
   // 하지만 moment()는 내년의 첫 주인 1로 표시하기 때문에 마지막 주가 1이라면 53으로 표시합니다.(2월이 29일이 아닌 년도의 12월 마지막 주의 경우 1을 리턴)
-  const feeling = ['happy', 'surprised', null, 'sad', 'anger', null, null, 'fear', 'hate' ,'happy', 'neutral']
-
-  const [todayColor, setTodayColor] = useState(feeling[0])
 
   // date 를 받아서 페이지 이동하는 함수
   const getDiary = async (date) => {
-    const diaryList = await axios.get(`/diaries`);
+    const diaryList = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
     for (let i = 0; i < diaryList.data.length; i++) {
+        console.log(diaryList.data[i].date)
         if (diaryList.data[i].date === date){
         navigate(`/diary?writtenDate=${date}`);
         return
@@ -47,7 +46,7 @@ const Calendar =()=>{
                 return(
                     <td className="todayButton" key={index} >
                       <button className="todayButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))} 
-                      style={{width:'30px', height: '30px', borderRadius: '50%', borderColor: 'red' }}>
+                      style={{ backgroundColor:'white', width:'30px', height: '30px', borderRadius: '50%', borderColor: 'red' }}>
                         <span>{days.format('D')}</span>
                       </button>
                     </td>
@@ -65,7 +64,7 @@ const Calendar =()=>{
                 return(
                     <td className="restButton" key={index}  >
                       <button className="restButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))} 
-                      style={{width:'30px', height: '30px', borderRadius: '50%', border: 'none'}}>
+                      style={{ backgroundColor:'white', width:'30px', height: '30px', borderRadius: '50%', border: 'none'}}>
                         <span>{days.format('D')}</span>
                       </button>
                     </td>
@@ -90,7 +89,7 @@ const Calendar =()=>{
 
   // 일기 목록을 불러오는 "diary print" 버튼을 눌렀을 때 실헹되는 함수
   const getCalendar = async() => {
-    const response = await axios.get(`/diaries`);
+    const response = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
     setCalendar(response.data);
   }
 
@@ -98,20 +97,18 @@ const Calendar =()=>{
     <div className="App">
         <div className="control">
           <button className="beforeMonth" 
-          onClick={()=>setMoment(getMoment.clone().subtract(1,'month'))}
-          style = {{backgroundColor:'gray', width:'20px', height: '20px', borderRadius: '50%', border: 'none'}}>
+          onClick={()=>setMoment(getMoment.clone().subtract(1,'month'))}>
             {'<'}
           </button>
 
           <span className="nowMonth">    {today.format('YYYY 년 MM 월')}    </span>
 
           <button className="afterMonth" 
-          onClick={()=>{setMoment(getMoment.clone().add(1,'month'))}}
-          style = {{backgroundColor:'gray', width:'20px', height: '20px', borderRadius: '50%', border: 'none'}}>
+          onClick={()=>{setMoment(getMoment.clone().add(1,'month'))}}>
             {'>'}
           </button>
         </div>
-        <table>
+        <table className="calendar">
           <tbody>
             {calendarArr()}
           </tbody>
@@ -124,17 +121,7 @@ const Calendar =()=>{
           : null
         }
         </div>
-        
-        <button onClick={() => {
-            axios.get( "/check")
-            .then(response => {
-                console.log("check: ", response.data);
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-	    }}>유저체크</button>
     </div>
   );
 }
-export default Calendar;
+export default CalendarPage;

@@ -4,11 +4,14 @@ import { Formik } from "formik";
 import store, { login, logout } from "../redux_store/userSlice";
 import { connect } from "react-redux";
 import {loginDB} from "./LoginValidation";
+import "./LoginForm.scss";
 
 const LoginForm = ({onBtnClick}) => {
 	const navigate = useNavigate();
 	return (
-		<div>
+		<>
+		<div className="login">
+			<div className="logintitle">LOGIN</div>
 			<Formik 
 				initialValues={{ email: "", password: ""}}
 				// validationSchema={}
@@ -21,23 +24,24 @@ const LoginForm = ({onBtnClick}) => {
 				}}>
 				{formik => (
 					<form onSubmit={formik.handleSubmit}>
-
-						<label htmlFor="email">Email</label>
-						<input id="email" typ="eamil" {...formik.getFieldProps('email')} />
+						<input className="email-input" id="email" typ="eamil"
+						placeholder="  이메일을 입력하세요."  
+						{...formik.getFieldProps('email')} />
 						{ formik.touched.email && formik.errors.email ? 
 							(<div>{formik.errors.email}</div>) : null }
 
-						<label htmlFor="password">Password</label>
-						<input id="password" type="password" {...formik.getFieldProps('password')}/>
+						<input className="pw-input" id="password" type="password"
+						placeholder="  비밀번호를 입력하세요."  
+						{...formik.getFieldProps('password')}/>
 						{ formik.touched.password && formik.errors.password ? 
 							(<div>{formik.errors.password}</div>) : null }
 
-						<button type="submit">Login</button>
-
+						<button className="loginbutton" type="submit">Login</button>
 					</form>
 				)}
 			</Formik>
 		</div>
+		</>
 	)
 
 }

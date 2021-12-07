@@ -1,10 +1,12 @@
 .background {
-    width: 1500px;
-    height: 690px;
+    background-size: cover;
     background-color: #e1e3ca;
-    padding-top: 30px;
-    padding-left: 70px;
-    display:flex;
+    display: grid;
+    place-items: center;
+
+    // 부모 엘리먼트의 min-height 속성을 100vh로 설정해주고 있는데요. 
+    // 이렇게 스타일하지 않으면 부모 엘리먼트의 높이가 컨텐츠 높이만큼 자치하기 때문에 수평으로 정렬되는 효과만 나타나게 되오니 주의 바랍니다.
+    min-height: 100vh;
 
     .bookmark {
         float: left;
@@ -12,40 +14,22 @@
 
     .book {
         float: left;
-        margin-top: 30px;
-        margin-left: 0px;
+        position: absolute;
         background-color: white;
-        width: 1000px;
-        height: 600px;
+        background-size: cover;
         border-radius: 5px;
         border-left: 5px solid #9B9191;
         border-right: 5px solid #9B9191;
-
-        .pageBrighter {
-            width: 5px;
-            // width: 15px;
-            height: 600px;
-            // border-radius: 5px 0px 0px 5px;
-            background-color: #c4c4c4;
-            // background: linear-gradient(to right, #a89d9d, #eee);
-        }
-
-        .pageBrightest {
-            width: 5px;
-            height: 600px;
-            background-color: #e2e2e2;
-        }
+        width: 70%;
+        height: 90%;
 
         .leftpage {
             float: left; // 두 div를 나란히 옆에 붙이는 방법( 참고 : https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html )
-            margin-top: 0px;
-            margin-left: 0px;
             background-color: white;
-            width: 489px;
-            height: 600px;
+            background-size: cover;
             border-right: 0.05px solid gray;
-            // linear-gradient ( 참고 : https://www.codingfactory.net/10838 )
-            // background: linear-gradient(to left, gray, rgb(140,140,140), rgb(153, 153, 153), rgb(165,165,165), rgb(180,180,180), rgb(195,195,195), rgb(209, 209, 209), #eee);
+            width: 49%;
+            height: 100%;
             .in {
                 margin-left: 30px;
                 margin-top: 30px;
@@ -57,8 +41,9 @@
             margin-top: 0px;
             margin-left: 0px;
             background-color: white;
-            width: 489px;
-            height: 600px;
+            background-size: cover;
+            width: 50%;
+            height: 100%;
             .in {
                 margin-left: 30px;
                 margin-top: 30px;
