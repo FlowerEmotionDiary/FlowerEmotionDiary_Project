@@ -8,7 +8,7 @@ import ShowDiaryWrite from "./pages/ShowDiaryWrite";
 import ShowFlowerList from "./pages/ShowFlowerList";
 import ShowMoreAbout from "./pages/ShowMoreAbout";
 import ShowDiaryPage from "./pages/ShowDiaryPage";
-import ShowLoginPage from "./pages/ShowLoginPage";
+import Chart from './components/chart/Chart';
 
 const App = () => {
 
@@ -23,6 +23,7 @@ const App = () => {
         <Route exact path='/flowerList' element={<ShowFlowerList />} />
         <Route exact path='/moreAbout' element={<ShowMoreAbout />} />
         <Route exact path="/diary" element={<ShowDiaryPage />} />
+        <Route exact path="/chart" element={<Chart />} />
       </Routes>
     </BrowserRouter>
 
