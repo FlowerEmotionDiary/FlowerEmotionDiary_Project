@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { Button, Form, FormField, Input } from 'semantic-ui-react';
+import { Button, Container, Form, FormField, Input } from 'semantic-ui-react';
 import "./DiaryWritePage.scss";
 
 const DiaryWritePage = () => {
@@ -40,11 +40,23 @@ const DiaryWritePage = () => {
     var navigate = useNavigate();
 
     return (
+
         <div className="Diary">
             <Form onSubmit={SubmitDiary}>
                 <FormField>
+                    <input
+                        id='date'
+                        type="date"
+                        name="date"
+                        value={date}
+                        onChange={handleDateChange}
+                        style={{ width: "175px", resize: "none", fontSize: "17px" }}
+                    />
+                </FormField>
+
+                <FormField>
                     {/* 제목 : <Input */}
-                    제목
+
                     <textarea
                         className="DiaryTitle"
                         type="text"
@@ -56,31 +68,22 @@ const DiaryWritePage = () => {
                                 setTitle(e.target.value)
                             }
                         }
-                        style={{ width: "400px", height: "30px", resize: "none" }}
+                        style={{ width: "300px", height: "30px", resize: "none", textAlign: "center", fontSize: '18px' }}
                     />
                 </FormField>
+
                 <FormField>
-                    날짜 <Input
-                        id='date'
-                        type="date"
-                        name="date"
-                        value={date}
-                        onChange={handleDateChange}
-                        style={{ width: "150px", resize: "none" }}
-                    />
-                </FormField>
-                <FormField>
-                    내용
+
                     <textarea
                         className="DiaryContent"
                         value={content}
                         placeholder="내용을 입력하세요"
                         onChange={handleChange}
-                        style={{ width: "430px", height: "200px", resize: "none" }}
+                        style={{ width: "270px", height: "200px", resize: "none", textAlign: "center" }}
                     />
                 </FormField>
                 <FormField>
-                    <Button type="submit" className="DiaryWriteButton">저장</Button>
+                    <Button type="submit" className="DiaryWriteButton">작성 완료</Button>
                 </FormField>
             </Form>
         </div>
