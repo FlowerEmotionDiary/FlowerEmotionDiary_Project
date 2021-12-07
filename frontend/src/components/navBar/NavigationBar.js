@@ -1,33 +1,35 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, NavLink } from 'react-router-dom';
 import "./NavigationBar.scss"
 
 const NavigationBar = () => {
-    const navigate = useNavigate();
-    const moveCal = () => {
-        navigate("/calendar");
-    }
-    const moveDiaryWrite = () => {
-        navigate("/diary-write");
-    }
-    const moveFlowerList = () => {
-        navigate("/flowerList");
-    }
-    const moveAboutUs = () => {
-        navigate("/moreAbout");
-    }
+    const [width, setWidth] = useState("95px")
+    const activeStyle = () => {setWidth("100px")}
     return (
         <>
         <div className="navigation">
-            <button className="menuBar" onClick={moveCal}><br />달력</button>
+            <button className="menuBar" style={{width: width}}><NavLink className="navlink" to="/calendar" 
+            style={({ isActive }) =>
+              isActive ? setWidth("150px") : setWidth("95px")}
+              ><br />달력</NavLink></button>
             <div className="space"></div>
 
-            <button className="menuBar" onClick={moveDiaryWrite}><br />일기</button>
+            <button className="menuBar"><NavLink className="navlink" to="/diary-write" 
+            // style={({ isActive }) =>
+            //   isActive ? {width : "100px"} : {width : "95px"}}
+              ><br />일기</NavLink></button>
             <div className="space"></div>
 
-            <button className="menuBar" onClick={moveFlowerList}><br />꽃무리</button>
+            <button className="menuBar"><NavLink className="navlink" to="/flowerList" 
+            // style={({ isActive }) =>
+            //   isActive ? {width : "100px"} : {width : "95px"}}
+              ><br />꽃무리</NavLink></button>
             <div className="space"></div>
 
-            <button className="menuBar" onClick={moveAboutUs}><br />About Us</button>
+            <button className="menuBar"><NavLink className="navlink" to="/moreAbout" 
+            // style={({ isActive }) =>
+            //   isActive ? {width : "100px"} : {width : "95px"}}
+              ><br />About Us</NavLink></button>
         </div>
         </>
     );
