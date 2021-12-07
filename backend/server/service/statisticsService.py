@@ -1,11 +1,12 @@
 from domain.dao.flowerDao import statics_year, check_flower, new_flower, update_flower
 from domain.dao.diaryDao import diaries_month
-from datetime import date
+from datetime import date, datetime
 from service.diaryService import max_emotion
 
-
+# 현재 달에 작성한 일기 카운트와 최근 날짜의 감정 리턴
 def month_statics_service(user_id):
-    diaries = diaries_month(user_id=user_id)
+    today = datetime.today()
+    diaries = diaries_month(user_id=user_id, month=today.month, year=today.year)
     count = len(diaries)
 
     current_date = date(1900, 1, 1)
@@ -29,6 +30,7 @@ def month_statics_service(user_id):
 
     cur_emotion = max_emotion(current_diary)
 
+    # flower table update 
     if check_flower(user_id):
         update_flower(user_id, count, max(count_emotion.keys(), key=(lambda k:count_emotion[k])))
     else:
@@ -47,3 +49,20 @@ def year_statics_service(user_id, year):
             "month":flower.date.month
         })
     return result
+
+def chart_service(user_id, year, month):
+    diaries = diaries_month(user_id=user_id, month=month, year=year)
+    print(len(diaries))
+    count_emotion = {
+        '공포' : 0, 
+        '놀람': 0, 
+        '분노': 0, 
+        '슬픔': 0, 
+        '중립': 0, 
+        '행복': 0, 
+        '혐오': 0
+        }
+    for diary in diaries:
+        count_emotion[max_emotion(diary)] += 1
+
+    return count_emotion
