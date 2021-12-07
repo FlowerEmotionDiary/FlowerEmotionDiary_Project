@@ -1,7 +1,10 @@
 import "./Book.scss";
 import NavigationBar from "../navBar/NavigationBar";
+import { logoutDB } from "../../login/LoginValidation";
+import { useNavigate } from 'react-router';
 
 const Book = props => {
+    const navigate = useNavigate();
     return (
         <>
             <div className="background">
@@ -15,6 +18,8 @@ const Book = props => {
                     <div className="pageBrightest" style={{ float: "right" }}></div>
                 </div>
             </div>
+            
+            <button onClick={()=>logoutDB(navigate)}>로그아웃</button>
         </>
     );
 }

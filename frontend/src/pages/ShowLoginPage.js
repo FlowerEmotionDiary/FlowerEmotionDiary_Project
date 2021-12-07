@@ -1,6 +1,6 @@
-import FlowerList from "../components/FlowerList";
+import FlowerList from "../components/flowerList/FlowerList";
 import Book from "../components/Book/Book";
-import LoginForm from "../login/LoginForm";
+import LoginForm from "../login/loginForm";
 
 const ShowLoginPage = () => {
     return (

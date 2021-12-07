@@ -1,4 +1,4 @@
-import FlowerList from "../components/FlowerList";
+import FlowerList from "../components/flowerList/FlowerList";
 import MoreAbout from "../components/MoreAbout";
 import Book from "../components/Book/Book";
 
