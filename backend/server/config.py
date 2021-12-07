@@ -16,7 +16,7 @@ JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
 JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
 
 JWT_COOKIE_SECURE = False # https를 통해서만 cookie가 갈 수 있는지 (production 에선 True)
-# JWT_TOKEN_LOCATION = ['cookies']
+JWT_TOKEN_LOCATION = ["headers", "cookies", "json"]
 # JWT_ACCESS_COOKIE_PATH = '/' # access cookie를 보관할 url (Frontend 기준)
 JWT_REFRESH_COOKIE_PATH = '/' # refresh cookie를 보관할 url (Frontend 기준)
 # # CSRF 토큰 역시 생성해서 쿠키에 저장할지 

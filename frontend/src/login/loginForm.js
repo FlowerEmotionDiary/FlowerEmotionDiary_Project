@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from 'react-router';
 import { Formik } from "formik";
-import store, { login, logout } from "../redux_store/userSlice";
-import { connect } from "react-redux";
 import {loginDB} from "./LoginValidation";
 
-const LoginForm = ({onBtnClick}) => {
+const LoginForm = () => {
 	const navigate = useNavigate();
 	return (
 		<div>
@@ -16,7 +14,6 @@ const LoginForm = ({onBtnClick}) => {
 					try {
 						loginDB(values, navigate);
 					} catch {}
-					onBtnClick({user:values.email});
 					setSubmitting(false);
 				}}>
 				{formik => (
@@ -42,9 +39,5 @@ const LoginForm = ({onBtnClick}) => {
 
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        onBtnClick: (id, accessToken) => dispatch(login(id, accessToken))
-    };
-}
-export default connect(mapDispatchToProps)(LoginForm);
+
+export default LoginForm;

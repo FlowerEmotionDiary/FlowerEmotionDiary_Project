@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from apis.dto.requestDto import login_request_dto
 from apis.dto.responseDto import user_response_dto, login_response_dto
 from service.loginService import login_user, token_reissuance, check_user
-from flask_jwt_extended import  jwt_required
+from flask_jwt_extended import  jwt_required, get_jwt_identity
 from flask_jwt_extended.utils import unset_jwt_cookies
 
 login_bp = Blueprint('login', __name__, url_prefix='/api')
@@ -19,8 +19,8 @@ def login():
 @login_bp.route("/silent-refresh", methods=['GET'])
 @jwt_required(refresh=True)
 def silent_refresh():
-    access_token = token_reissuance()
-    return jsonify(access_token=access_token)
+    result = token_reissuance()
+    return login_response_dto(result)
 
 # 토큰 보냈을 때 유저 정보 체크
 @login_bp.route("/check", methods=['GET'])
