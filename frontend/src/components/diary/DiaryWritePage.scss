@@ -14,25 +14,25 @@
 }
 
 
-
 .Diary{
-    font-family: 'hamMedium';
-    margin-top: 10%;
-    margin-left: 3%;
-    font-size: 20px;
-
-
+    border: 2px solid #CADCAC;
+    border-radius: 20px;
+    display: flex;
+    max-width: 420px;
+    padding-bottom: 60px;
     .DiaryTitle{
         font-family: 'hamLight';
-        margin-bottom: 20px;
-        margin-top: 30px;
+        display: flex;
+        
+        margin-top: 13%;
+        margin-left: 17%;
         padding-top: 5px;
         padding-bottom: 5px;
+
         border-style: dashed;
         border-color:lightgray;
         border-width: 1.6px;
-        height: 56px;
-        font-size: 20px;
+
         border-radius: 10px;
         outline: none;
     
@@ -42,11 +42,9 @@
 
     #date{
         font-family: 'hamMedium';
-        font-size: 15px;
 
-        padding: 1px;
-        margin-bottom: 5px;
-        margin-left: 0px;
+        margin-top: 60px;
+        margin-left: 30px;
         
         border:none;
         border-color: rgba(206, 202, 202, 0.775);
@@ -60,9 +58,10 @@
         font-family: 'hamLight';
         font-size: 15px;
 
-        padding: 20px 60px 20px 60px;
-        margin-bottom: 5px;
-        margin-top: 10px;
+        padding: 10px 20px 10px 20px;
+        margin-bottom: 9px;
+        margin-top: 5%;
+        margin-left: 16%;
 
         border-style: dashed;
         border-width: 1.6px;
@@ -74,8 +73,9 @@
 
     .DiaryWriteButton{
         font-family: 'hamMedium';
-        margin-top: 10px;
-        margin-left: 35%;
+        margin-top: 15px;
+        margin-left: 52%;
+        margin-bottom: 15px;
 
         background-color: #FECD6E;
         border: none;
