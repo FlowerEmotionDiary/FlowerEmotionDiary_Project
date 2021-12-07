@@ -14,13 +14,21 @@ import {onSilentRefresh} from "./login/LoginValidation";
 import { getCookie } from "./cookie";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { loaded: false }
+  }
+
   componentDidMount() {
     if (getCookie("refreshToken"))
       {
-        onSilentRefresh();
+        onSilentRefresh().then(() => this.setState({ loaded: true}))
+        
       }
   }
   render() {
+    if (!this.state.loaded) return null
+    
     return (
       <BrowserRouter>
         <Routes>
