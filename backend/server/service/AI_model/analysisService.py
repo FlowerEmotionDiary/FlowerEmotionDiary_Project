@@ -5,6 +5,7 @@ from konlpy.tag import Okt
 import fasttext
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
+import pathlib
 
 # model_path
 pretrain_model_path = "./model3_100.h5"
