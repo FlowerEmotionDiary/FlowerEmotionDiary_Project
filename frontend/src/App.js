@@ -23,11 +23,15 @@ class App extends Component {
     if (getCookie("refreshToken"))
       {
         onSilentRefresh().then(() => this.setState({ loaded: true}))
-        
       }
+    else 
+    {
+      this.setState({ loaded: true})
+    }
   }
   render() {
-    if (!this.state.loaded) return null
+    if (!this.state.loaded) 
+      return null
     
     return (
       <BrowserRouter>
