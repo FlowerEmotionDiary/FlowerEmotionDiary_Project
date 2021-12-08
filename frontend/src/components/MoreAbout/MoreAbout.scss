@@ -1,0 +1,39 @@
+.intro{
+    text-align: center;
+    font-size : 20px;
+    font-weight: bold;
+    margin-bottom: auto;
+}
+
+.FAQ{
+    text-align: left;
+    margin-top : 20%;
+    padding-top : auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.QuestionText {
+    font-size:20px;
+    font-weight: 900;
+}
+.AnswerText{
+    font-size: 15px;
+}
+.Team{
+    display: grid;
+    width: auto;
+    height: auto;
+	grid-template-columns: 150px 20px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    // margin-bottom: 200px;
+
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    
+  }
