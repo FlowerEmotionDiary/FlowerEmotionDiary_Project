@@ -3,33 +3,37 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import "./NavigationBar.scss"
 
 const NavigationBar = () => {
-    const [width, setWidth] = useState("95px")
-    const activeStyle = () => {setWidth("100px")}
+    const activeStyle = {
+      width: "100px",
+      left: "-20px",
+      backgroundColor: "#f0bb62"
+    }
     return (
         <>
         <div className="navigation">
-            <button className="menuBar" style={{width: width}}><NavLink className="navlink" to="/calendar" 
-            style={({ isActive }) =>
-              isActive ? setWidth("150px") : setWidth("95px")}
-              ><br />달력</NavLink></button>
+            <NavLink className="menuBar" to="/calendar" 
+              style={({ isActive }) => isActive ? activeStyle : undefined}>
+              <a className="navlink">달력</a>
+              </NavLink>
             <div className="space"></div>
 
-            <button className="menuBar"><NavLink className="navlink" to="/diary-write" 
-            // style={({ isActive }) =>
-            //   isActive ? {width : "100px"} : {width : "95px"}}
-              ><br />일기</NavLink></button>
+            <NavLink className="menuBar" to="/diary-write" 
+              style={({ isActive }) => isActive ? activeStyle : undefined}>
+              <a className="navlink">일기</a>
+              </NavLink>
             <div className="space"></div>
 
-            <button className="menuBar"><NavLink className="navlink" to="/flowerList" 
-            // style={({ isActive }) =>
-            //   isActive ? {width : "100px"} : {width : "95px"}}
-              ><br />꽃무리</NavLink></button>
+            <NavLink className="menuBar" to="/flowerList" 
+              style={({ isActive }) => isActive ? activeStyle : undefined}>
+              <a className="navlink">꽃무리</a>
+              </NavLink>
             <div className="space"></div>
 
-            <button className="menuBar"><NavLink className="navlink" to="/moreAbout" 
-            // style={({ isActive }) =>
-            //   isActive ? {width : "100px"} : {width : "95px"}}
-              ><br />About Us</NavLink></button>
+            <NavLink className="menuBar" to="/moreAbout" 
+              style={({ isActive }) => isActive ? activeStyle : undefined}>
+              <a className="navlink">About Us</a>
+              </NavLink>
+            <div className="space"></div>
         </div>
         </>
     );
