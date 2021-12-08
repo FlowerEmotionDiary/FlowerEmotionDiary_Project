@@ -7,9 +7,11 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import pathlib
 
+current_path = str(pathlib.Path(__file__).parent.resolve())
+
 # model_path
-pretrain_model_path = "./model3_100.h5"
-fasttext_model_path = "./cc.ko.100.bin"
+pretrain_model_path = current_path + "/model3_100.h5"
+fasttext_model_path = current_path + "/cc.ko.100.bin"
 
 okt = Okt()
 
