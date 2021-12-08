@@ -26,15 +26,11 @@ const FlowerList = ({Login}) => {
             {
                 emotion ?             
                 <img id='flower' src={`images/${
-                    count > 10 ? "꽃" : "새싹" 
-                }-${emotion}.png`}></img> 
+                    count < 2 ? "새싹/" : 
+                    count < 4 ? "중간싹/" : "꽃/" 
+                }${emotion}.png`}></img> 
             : null
             }
-            {/* <img id='flower' 
-                src={`images/${
-                    count > 10 ? "꽃" : "새싹" 
-                }-${emotion}.png`}>
-            </img> */}
         </div>
     );
 }
