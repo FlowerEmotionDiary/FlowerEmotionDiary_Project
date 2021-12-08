@@ -9,7 +9,6 @@ const loginDB = (values, navigate) => {
   axios.post(`/login`, values, { withCredentials: true })
     .then(response => {
       onLoginSuccess(response)
-      console.log("success");
       store.dispatch(login({email:values.email}))
       navigate("/calendar");
     }) 
@@ -19,16 +18,15 @@ const loginDB = (values, navigate) => {
   }
 
   const logoutDB = (navigate) => {
-    console.log("start logout")
     store.dispatch(logout());
     navigate("/");
+    
     deleteCookie("refreshToken")
-    console.log("end logout")
 };
 
 const onSilentRefresh = () => {
   const refreshToken = getCookie('refreshToken');
-  axios.get('/silent-refresh',{
+  const res = axios.get('/silent-refresh',{
       headers:{
         Authorization: `Bearer ${refreshToken}`,
       }}
@@ -37,11 +35,10 @@ const onSilentRefresh = () => {
     .catch(error => {
       console.log(error);
     })
+  return res
 }
 
 const onLoginSuccess = response => {
-  console.log(response);
-
   const accessToken = response.data.access_token;
   axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   const refreshToken = response.data.refresh_token;
@@ -50,7 +47,6 @@ const onLoginSuccess = response => {
     secure: true,
     sameSite: "none"
   })
-  console.log("refresh: ", refreshToken)
   // setTimeout(onSilentRefresh(), JWT_EXPIRRY_TIME - 60000);
 }
 
