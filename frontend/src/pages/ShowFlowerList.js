@@ -1,4 +1,4 @@
-import FlowerList from "../components/flowerList/FlowerList";
+import FlowerBoard from "../components/flowerList/FlowerBoard";
 import Book from "../components/Book/Book";
 import Chart from '../components/chart/Chart';
 
@@ -6,7 +6,7 @@ import Chart from '../components/chart/Chart';
 const ShowFlowerList = () => {
     return (
         <>
-            <Book left={<FlowerList />} right={<Chart />} />
+            <Book left={<FlowerBoard />} right={<Chart />} />
         </>
     );
 }
