@@ -30,6 +30,11 @@ const NavigationBar = () => {
             // style={({ isActive }) =>
             //   isActive ? {width : "100px"} : {width : "95px"}}
               ><br />About Us</NavLink></button>
+
+            <button className="menuBar"><NavLink className="navlink" to="/team" 
+            // style={({ isActive }) =>
+            //   isActive ? {width : "100px"} : {width : "95px"}}
+              ><br />Team</NavLink></button>
         </div>
         </>
     );

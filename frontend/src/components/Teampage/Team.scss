@@ -1,0 +1,18 @@
+.Team{
+    display: grid;
+    width: auto;
+    height: auto;
+	grid-template-columns: 150px 20px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    // margin-bottom: 200px;
+
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    
+  }

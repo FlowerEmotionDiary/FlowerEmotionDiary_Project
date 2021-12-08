@@ -16,7 +16,7 @@ const MoreAbout = () => {
           <h1>Question</h1>
           <div className = "FAQ_1">
             <div className = "QuestionText">
-              <ol>F : </ol>
+              <ol>F : 어떤 서비스 인가요? </ol>
               </div>
             </div>
 
