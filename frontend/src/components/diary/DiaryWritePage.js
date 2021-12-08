@@ -7,6 +7,7 @@ import { Button, Container, Form, FormField, Input } from 'semantic-ui-react';
 import "./DiaryWritePage.scss";
 
 const DiaryWritePage = () => {
+    var navigate = useNavigate();
     let location = useLocation(); // useLocation 훅은 현재의 URL을 대표하는 location 객체를 반환
     const params = new URLSearchParams(location.search);
     const whatDay = params.get('selectedDate');
@@ -37,7 +38,6 @@ const DiaryWritePage = () => {
         navigate(`/diary?writtenDate=${date}`);
     }
 
-    var navigate = useNavigate();
 
     return (
 
