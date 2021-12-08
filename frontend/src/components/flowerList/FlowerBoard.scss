@@ -1,0 +1,40 @@
+#board {
+    position: absolute;
+    width: 420px;
+    height: 550px;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+#board-container {
+    margin-top: 20%;
+    width: 100%;
+    height: 550px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.flowerpot {
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    object-fit: contain;
+}
+
+.flower {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position:absolute;
+    object-fit: contain;
+
+}
+
+
+.pot {
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
