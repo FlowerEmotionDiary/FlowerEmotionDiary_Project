@@ -1,68 +1,53 @@
 .background {
-    width: 1500px;
-    height: 690px;
+    background-size: cover;
     background-color: #e1e3ca;
-    padding-top: 30px;
-    padding-left: 70px;
-    display:flex;
+    place-items: center;
+    display: grid;
+    grid-template-columns: minmax(120px, 20%) minmax(900px, 60%) minmax(120px, 20%);
+    grid-template-rows: minmax(50px, 100px) minmax(600px, auto) minmax(50px, 100px);
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
 
     .bookmark {
-        float: left;
+        grid-column: 1 / 2;
+        position: absolute;
+        top: 80px;
+        left: -100px;
     }
 
     .book {
-        float: left;
-        margin-top: 30px;
-        margin-left: 0px;
-        background-color: white;
-        width: 1000px;
-        height: 600px;
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(450px, auto));
+        position: relative;
+        background-size: cover;
         border-radius: 5px;
         border-left: 5px solid #9B9191;
         border-right: 5px solid #9B9191;
-
-        .pageBrighter {
-            width: 5px;
-            // width: 15px;
-            height: 600px;
-            // border-radius: 5px 0px 0px 5px;
-            background-color: #c4c4c4;
-            // background: linear-gradient(to right, #a89d9d, #eee);
-        }
-
-        .pageBrightest {
-            width: 5px;
-            height: 600px;
-            background-color: #e2e2e2;
-        }
+        width: 100%;
+        height: 0;
+        padding-top: 65%;
 
         .leftpage {
-            float: left; // 두 div를 나란히 옆에 붙이는 방법( 참고 : https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html )
-            margin-top: 0px;
-            margin-left: 0px;
+            grid-column: 1 / 2;
+            position: absolute; 
+            top: 0; right: 0; bottom: 0; left: 0;
             background-color: white;
-            width: 489px;
-            height: 600px;
+            background-size: cover;
             border-right: 0.05px solid gray;
-            // linear-gradient ( 참고 : https://www.codingfactory.net/10838 )
-            // background: linear-gradient(to left, gray, rgb(140,140,140), rgb(153, 153, 153), rgb(165,165,165), rgb(180,180,180), rgb(195,195,195), rgb(209, 209, 209), #eee);
-            .in {
-                margin-left: 30px;
-                margin-top: 30px;
-            }
         }
         
         .rightpage {
-            float: left;
+            grid-column: 2 / 3;
+            position: absolute; 
+            top: 0; right: 0; bottom: 0; left: 0;
             margin-top: 0px;
             margin-left: 0px;
             background-color: white;
-            width: 489px;
-            height: 600px;
-            .in {
-                margin-left: 30px;
-                margin-top: 30px;
-            }
+            background-size: cover;
         }
     }
 }
