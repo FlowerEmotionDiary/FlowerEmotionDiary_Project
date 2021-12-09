@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { logoutDB } from "../login/LoginValidation";
 import { useNavigate } from 'react-router';
-import '../../src/intro.png';
+import './FirstPage.scss';
 
 const FirstPage = ({ Login }) => {
     const navigate = useNavigate();
