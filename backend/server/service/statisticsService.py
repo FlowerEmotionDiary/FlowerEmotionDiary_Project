@@ -8,7 +8,8 @@ def month_statics_service(user_id):
     today = datetime.today()
     diaries = diaries_month(user_id=user_id, month=today.month, year=today.year)
     count = len(diaries)
-
+    if diaries is None:
+        count = 0
     current_date = date(1900, 1, 1)
     current_diary = ""
     count_emotion = {
