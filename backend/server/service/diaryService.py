@@ -1,5 +1,5 @@
 from domain.dao.diaryDao import check_diary_date, new_diary, all_diaries, delete_diary_date, update_diary
-# from service.AI_model.analysisService import function
+from service.AI_model.analysisService import function
 
 
 # 일기 작성 서비스
@@ -7,8 +7,7 @@ def diary_post_service(user_id, diary):
     check_diary = check_diary_date(user_id, diary['date'])
 
     # 작성한 다이어리가 없다면 새로 생성
-    # emotion = function.split_send_data(diary['content'])
-    emotion = {'공포' : 0, '놀람': 1, '분노': 2, '슬픔': 3, '중립': 4, '행복': 5, '혐오': 6}
+    emotion = function.split_send_data(diary['content'])
     if not check_diary:
         diary = new_diary(
             user_id=user_id,
@@ -31,10 +30,8 @@ def diary_delete_service(user_id, date):
 
 # 일기 수정 서비스
 def diary_update_service(user_id, diary):
-    # emotion = function.split_send_data(diary['content'])
-    emotion = {'공포' : 6, '놀람': 5, '분노': 4, '슬픔': 3, '중립': 2, '행복': 1, '혐오': 0}
+    emotion = function.split_send_data(diary['content'])
 
-    
     if update_diary(
         user_id=user_id,
         diary=diary, 

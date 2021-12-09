@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # 사용할때는 복사본으로 사용
 from tensorflow.keras.models import load_model
 from konlpy.tag import Okt
@@ -6,11 +6,8 @@ import fasttext
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import pathlib
-<<<<<<< HEAD
 from collections import defaultdict
 import re
-=======
->>>>>>> 0dd7b12d92d664f11a36d2438a523703edba6a65
 
 current_path = str(pathlib.Path(__file__).parent.resolve())
 
@@ -34,7 +31,7 @@ class LSTM_emotion:
     # 이 메소드로 사용하시면 됩니다.
     def split_send_data(self,input_data):
         
-        split_data = re.split(f"[{input_split_string}]",input_data)
+        split_data = re.split(f"[{split_string}]",input_data)
 
         emotion_return = defaultdict(float)
 
