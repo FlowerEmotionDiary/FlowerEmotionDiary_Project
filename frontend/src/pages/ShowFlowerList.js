@@ -1,4 +1,4 @@
-import FlowerList from "../components/flowerList/FlowerList";
+import FlowerBoard from "../components/flowerList/FlowerBoard";
 import Book from "../components/Book/Book";
 import DoughnutChart from '../components/chart/DoughnutChart';
 import LineChart from '../components/chart/LineChart';

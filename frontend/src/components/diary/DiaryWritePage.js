@@ -33,9 +33,9 @@ const DiaryWritePage = () => {
         console.log("diary-data-date: ", date)
         axios.post('/diary', diaryData).then((res) => {
             console.log(res)
+            navigate(`/diary?writtenDate=${date}`);
         })
         console.log(date)
-        navigate(`/diary?writtenDate=${date}`);
     }
 
 

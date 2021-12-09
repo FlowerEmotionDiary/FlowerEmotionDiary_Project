@@ -23,6 +23,7 @@ const LoginPage = ({Login}) => {
 }
 
 function mapStateToProps(state, ownProps) {
+    console.log(state)
     return {Login:state};
 }
 export default connect(mapStateToProps)(LoginPage);

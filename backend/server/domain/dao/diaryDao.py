@@ -51,14 +51,22 @@ def update_diary(user_id, diary, emotion):
     else:
         return False
 
-def diaries_month(user_id):
-    today = datetime.today()
-    diaries = Diary.query.filter_by(user_id=user_id).all()
+# def diaries_month(user_id):
+#     today = datetime.today()
+#     diaries = all_diaries(user_id)
+#     result = []
+#     for diary in diaries:
+#         if diary.date.month == today.month and diary.date.year == today.year:
+#             result.append(diary)
+#     return result
+
+def diaries_month(user_id, month, year):
+    diaries = all_diaries(user_id)
     result = []
     for diary in diaries:
-        if diary.date.month == today.month and diary.date.year == today.year:
+        if diary.date.month == month and diary.date.year == year:
             result.append(diary)
-    return result
+    return result  
 
 def all_diaries(user_id):
     result = Diary.query.filter_by(user_id=user_id).all()

@@ -1,16 +1,20 @@
 .register {
     text-align: center;
-    margin-top: 40%;
-    display: grid;
     place-items: center;
+    height: 92%;
+    margin: 5%;
+    border: 1.5px solid #CADCAC;
+    border-radius: 20px;
 
     .registertitle {
+        margin-top: 40%;
         font-size: 30px;
         font-family: 'Roboto Condensed', sans-serif;
         font-weight: bold;
     }
 
     .email-input {
+        font-size: 13px;
         height: 35px;
         width: 250px;
         margin-top: 5%;
@@ -20,30 +24,37 @@
     }
 
     .pw-input {
+        font-size: 13px;
         height: 35px;
         width: 250px;
-        margin-top: 3%;
+        margin-top: 10px;;
         background-color: #dfdede;
         border: none;
         border-radius: 10px;
     }
 
     .nick-input {
+        font-size: 13px;
         height: 35px;
         width: 250px;
-        margin-top: 3%;
+        margin-top: 10px;;
         background-color: #dfdede;
         border: none;
         border-radius: 10px;
     }
 
+    .error {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
     .registerbutton {
         height: 35px;
         width: 250px; // 위의 텍스트 박스랑 너비를 같게 했는데 얘가 더 좁아보이는 이유는?
-        margin-top: 3%;
+        margin-top: 10px;;
         background-color: #CADCAC;
         color: white;
-        font-size: 26px;
+        font-size: 20px;
         // font-weight: bold;
         border: none;
         border-radius: 10px;
