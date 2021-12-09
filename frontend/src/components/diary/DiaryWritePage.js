@@ -7,6 +7,7 @@ import { Button, Container, Form, FormField, Input } from 'semantic-ui-react';
 import "./DiaryWritePage.scss";
 
 const DiaryWritePage = () => {
+    var navigate = useNavigate();
     let location = useLocation(); // useLocation 훅은 현재의 URL을 대표하는 location 객체를 반환
     const params = new URLSearchParams(location.search);
     const whatDay = params.get('selectedDate');
@@ -29,17 +30,14 @@ const DiaryWritePage = () => {
 
     const SubmitDiary = () => {
         const diaryData = { title: title, content: content, date: date };
-        console.log("diary-data-date: ", date)
         axios.post('/diary', diaryData).then((res) => {
-            console.log(res)
+            navigate(`/diary?writtenDate=${date}`);
         })
-        console.log(date)
-        navigate(`/diary?writtenDate=${date}`);
     }
 
-    var navigate = useNavigate();
 
     return (
+
         <div className="Diary">
             <Form onSubmit={SubmitDiary}>
                 <FormField>
@@ -49,7 +47,7 @@ const DiaryWritePage = () => {
                         name="date"
                         value={date}
                         onChange={handleDateChange}
-                        style={{ width: "175px", resize: "none", fontSize: "20px" }}
+                        style={{ width: "175px", resize: "none", fontSize: "17px" }}
                     />
                 </FormField>
 
@@ -67,7 +65,7 @@ const DiaryWritePage = () => {
                                 setTitle(e.target.value)
                             }
                         }
-                        style={{ width: "393px", height: "30px", resize: "none", textAlign: "center" }}
+                        style={{ width: "300px", height: "30px", resize: "none", textAlign: "center", fontSize: '18px' }}
                     />
                 </FormField>
 
@@ -78,8 +76,7 @@ const DiaryWritePage = () => {
                         value={content}
                         placeholder="내용을 입력하세요"
                         onChange={handleChange}
-                        rows='3'
-                        style={{ width: "280px", height: "270px", resize: "none", textAlign: "center" }}
+                        style={{ width: "270px", height: "200px", resize: "none", textAlign: "center" }}
                     />
                 </FormField>
                 <FormField>
