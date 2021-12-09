@@ -26,7 +26,7 @@ const FlowerBoard = ({Login}) => {
 
     const checkFlower = (count, emotion) => {
         let folder = ''
-        if (count == 0) return `images/새싹.png`
+        if (count == 0) return `images/씨앗.png`
         if (count < 6) folder = `새싹`
         else if (count < 14) folder = '중간싹'
         else if (count < 22) folder = '꽃봉오리'
@@ -63,7 +63,7 @@ const FlowerBoard = ({Login}) => {
     }
     
     return( 
-        <div className='container'>
+        <div className='flowewr-container'>
             {/* <img className='board' src={`images/board.png`} /> */}
             <div className='pot-container'>
                 {flowerPotRendering()}
