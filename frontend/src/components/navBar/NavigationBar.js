@@ -29,9 +29,16 @@ const NavigationBar = () => {
               </NavLink>
             <div className="space"></div>
 
+
             <NavLink className="menuBar" to="/moreAbout" 
               style={({ isActive }) => isActive ? activeStyle : undefined}>
               <a className="navlink">About Us</a>
+              </NavLink>
+            <div className="space"></div>
+
+            <NavLink className="menuBar" to="/team" 
+              style={({ isActive }) => isActive ? activeStyle : undefined}>
+              <a className="navlink">Team</a>
               </NavLink>
             <div className="space"></div>
         </div>
