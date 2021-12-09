@@ -32,6 +32,7 @@ const Diary = () => {
                 const response = await axios.get(
                     `/diary/${date}`,
                 );
+                console.log(response)
 
                 setYear(date.split('-')[0])
                 setMonth(date.split('-')[1])

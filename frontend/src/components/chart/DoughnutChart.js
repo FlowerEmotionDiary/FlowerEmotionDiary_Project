@@ -1,53 +1,124 @@
 import React from 'react';
+import { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './DoughnutChart.scss'
+import axios from 'axios';
+import { Dropdown } from 'react-bootstrap'
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-    labels: ['중립', '슬픔', '혐오', '분노', '놀람', '기쁨', '공포'],
-    datasets: [
-        {
-            data: [0.2, 0.3, 0.1, 0.1, 0.03, 0.28],
-            backgroundColor: [
-                '#BFCBA8',
-                '#5B8A72',
-                '#56776C',
-                '#464F41',
-                '#F0BB62',
-                '#F4EEA9',
-                '#FCF8E8'
-            ],
-
-            borderWidth: 0,
-        },
-    ],
-};
-
-export const options = {
-    animation: {
-        duration: 2500
-    },
-    responsive: false,
-    plugins: {
-        legend: {
-            maxWidth: 2,
-            position: 'bottom',
-            labels: {
-                fontSize: 5,
-                display: false,
-                usePointStyle: true,
-                padding: 15,
-            }
-        },
-    },
-}
-
 
 export default function DoughnutChart() {
-    return <div id='dough'>
-        <Doughnut data={data} options={options} height={300} width={300} />
-    </div>
+    const d = new Date()
+    const now_year = d.getFullYear()
+    const now_month = d.getMonth() + 1
+    const [year, setYear] = useState(now_year)
+    const [month, setMonth] = useState(now_month)
+    const [datalist, setDatalist] = useState('')
 
+    const onSelectYear = (eventKey) => {
+        setYear(eventKey)
+        console.log(year)
+    }
+
+    const onSelectMonth = (eventKey) => {
+        setMonth(eventKey)
+        console.log(month)
+
+        const res = async () => {
+            try {
+                const response = await axios.get(`/chart?year=${year}&month=${month}`)
+                console.log("response data", response)
+                setDatalist(response.data)
+                console.log("try문에서 실행한 datalist", datalist)
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        res()
+        console.log("try문 밖에서 실행한 datalist", datalist)
+    }
+
+    // const list2 = [datalist['공포'], datalist['놀람'], datalist['분노'], datalist['슬픔'], datalist['중립'], datalist['행복'], datalist['혐오']]
+    // console.log(list2)
+    const data = {
+
+        labels: ['공포', '놀람', '분노', '슬픔', '중립', '행복', '혐오'],
+        datasets: [
+            {
+                // data: list2,
+                data: [1, 2, 3, 4, 5, 6, 7],
+                backgroundColor: [
+                    '#BFCBA8',
+                    '#5B8A72',
+                    '#56776C',
+                    '#464F41',
+                    '#F0BB62',
+                    '#F4EEA9',
+                    '#FCF8E8'
+                ],
+
+                borderWidth: 0,
+            },
+        ],
+    };
+
+    const options = {
+        // responsive: false,
+        animation: {
+            duration: 2500
+        },
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    fontSize: 5,
+                    display: false,
+                    usePointStyle: true,
+                    padding: 10,
+                }
+            },
+        },
+    }
+
+    return (
+        <div>
+            {/* <div id='dropYear'> */}
+            <Dropdown onSelect={(eventKey) => onSelectYear(eventKey)}>
+                <Dropdown.Toggle variant="success" id="dropdown-year">{year}년</Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item eventKey='2021'>2021</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+            {/* </div> */}
+
+            {/* <div id='dropMonth'> */}
+            <Dropdown onSelect={(eventKey) => onSelectMonth(eventKey)}>
+                <Dropdown.Toggle variant="success" id="dropdown-month">{month}월</Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item eventKey='12'>12</Dropdown.Item>
+                    <Dropdown.Item eventKey='11'>11</Dropdown.Item>
+                    <Dropdown.Item eventKey='10'>10</Dropdown.Item>
+                    <Dropdown.Item eventKey='9'>9</Dropdown.Item>
+                    <Dropdown.Item eventKey='8'>8</Dropdown.Item>
+                    <Dropdown.Item eventKey='7'>7</Dropdown.Item>
+                    <Dropdown.Item eventKey='6'>6</Dropdown.Item>
+                    <Dropdown.Item eventKey='5'>5</Dropdown.Item>
+                    <Dropdown.Item eventKey='4'>4</Dropdown.Item>
+                    <Dropdown.Item eventKey='3'>3</Dropdown.Item>
+                    <Dropdown.Item eventKey='2'>2</Dropdown.Item>
+                    <Dropdown.Item eventKey='1'>1</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+            {/* </div> */}
+
+            <div id='dough'>
+                <Doughnut data={data} options={options} height={400} width={400} />
+            </div>
+
+        </div>
+    )
 }

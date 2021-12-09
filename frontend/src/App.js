@@ -2,7 +2,7 @@ import "./App.css";
 import ShowLoginPage from "./pages/ShowLoginPage";
 import React, { Component } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-// import FirstPage from "./pages/FirstPage";
+import FirstPage from "./pages/FirstPage";
 import ShowRegisterPage from "./pages/ShowRegisterPage";
 import ShowCalendar from "./pages/ShowCalendar";
 import ShowDiaryWrite from "./pages/ShowDiaryWrite";
@@ -11,7 +11,6 @@ import ShowMoreAbout from "./pages/ShowMoreAbout";
 import ShowDiaryPage from "./pages/ShowDiaryPage";
 import { onSilentRefresh } from "./login/LoginValidation";
 import { getCookie } from "./cookie";
-import FirstPage from "./pages/표지";
 
 class App extends Component {
   componentDidMount() {
