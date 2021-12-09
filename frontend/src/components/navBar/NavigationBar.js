@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import "./NavigationBar.scss"
+import { logoutDB } from "../../login/LoginValidation";
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
     const activeStyle = {
       width: "100px",
       left: "-20px",
@@ -36,11 +38,17 @@ const NavigationBar = () => {
               </NavLink>
             <div className="space"></div>
 
-            <NavLink className="menuBar" to="/team" 
+            <NavLink className="menuBar" to="/" 
+              style={({ isActive }) => isActive ? activeStyle : undefined} onClick={()=>logoutDB(navigate)}>
+              <a className="navlink">logout</a>
+              </NavLink>
+            <div className="space"></div>
+
+            {/* <NavLink className="menuBar" to="/team" 
               style={({ isActive }) => isActive ? activeStyle : undefined}>
               <a className="navlink">Team</a>
               </NavLink>
-            <div className="space"></div>
+            <div className="space"></div> */}
         </div>
         </>
     );
