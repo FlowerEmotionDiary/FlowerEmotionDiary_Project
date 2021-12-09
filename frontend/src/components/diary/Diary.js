@@ -57,15 +57,13 @@ const Diary = () => {
             content: fulldata.content,
             date: date
         }
+
+        navigate(`/diary-write?selectedDate=${date}&diaryTitle=${diaryData.title}&diaryContent=${diaryData.content}`);      
+
+
         axios.patch(`/diary`, diaryData).then((res) => {
             console.log(res)
         })
-        navigate(`/diary-write?selectedDate=${date}`
-
-
-
-
-        );
 
     }
 

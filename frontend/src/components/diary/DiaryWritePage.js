@@ -11,8 +11,12 @@ const DiaryWritePage = () => {
     let location = useLocation(); // useLocation 훅은 현재의 URL을 대표하는 location 객체를 반환
     const params = new URLSearchParams(location.search);
     const whatDay = params.get('selectedDate');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const diaryTitle = params.get('diaryTitle');
+    console.log(diaryTitle);
+    const diaryContent = params.get('diaryContent');
+    console.log(diaryContent);
+    const [title, setTitle] = useState(diaryTitle);
+    const [content, setContent] = useState(diaryContent);
     const [date, setDate] = useState(whatDay) // 초기 상태 : 현재 날짜와 시간으로 설정
 
     const handleDateChange = (e) => {
@@ -26,6 +30,7 @@ const DiaryWritePage = () => {
 
     const handleChange = (e) => {
         setContent(e.target.value);
+        console.log(content)
     }
 
     const SubmitDiary = () => {
@@ -66,6 +71,7 @@ const DiaryWritePage = () => {
                         onChange={
                             (e) => {
                                 setTitle(e.target.value)
+                                console.log(title)
                             }
                         }
                         style={{ width: "300px", height: "30px", resize: "none", textAlign: "center", fontSize: '18px' }}
