@@ -1,12 +1,40 @@
+.calendar {
+    .todayButton {
+        .todayButton {
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border-color: red;
+        }
+    }
+
+    .nextMonthButton {
+        .nextMonthButton {
+            background-color: gray;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+        }
+    }
+
+    .restButton {
+        .restButton {
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+        }
+    }
+}
+
 .App {
-    // margin: 0 auto;
-    // border: 1px solid black;
     margin-top: 40%;
     .control {
         margin: 0 auto;
         .beforeMonth {
-            // margin: 0 auto;
-    // border: 1px solid black;
             background-color: gray;
             width: 20px;
             height: 20px;
@@ -15,8 +43,7 @@
         }
 
         .nowMonth {
-            // margin: 0 auto;
-            // border: 1px solid black;
+
         }
 
         .afterMonth {
@@ -25,13 +52,10 @@
             height: 20px;
             border-radius: 50%;
             border: none;
-            // margin: 0 auto;
-    // border: 1px solid black;
         }
     }
 
     .calendar {
-        // border: 1px solid black;
         margin: 0 auto;
         margin-top: 25px;
     }
@@ -39,34 +63,5 @@
     .diary-print {
         margin: 0 auto;
         margin-top: 50px;
-        // border: 1px solid black;
     }
 }
-
-// .App {
-//     .control {
-//         .beforeMonth {
-//             background-color: gray;
-//             width: 20px;
-//             height: 20px;
-//             border-radius: 50%;
-//             border: none;
-//         }
-
-//         .nowMonth {
-
-//         }
-
-//         .afterMonth {
-
-//         }
-//     }
-
-//     .calendar {
-
-//     }
-
-//     .diary-print {
-
-//     }
-// }
