@@ -7,9 +7,12 @@ const FlowerList = ({Login}) => {
     const [count, setCount] = useState(0);
     const [emotion, setEmotion] = useState("");
     const getFlower = async () => {
-        const response = await axios.get('/flower')
+        try{const response = await axios.get('/flower')
         setCount(response.data.count);
         setEmotion(response.data.emotion);
+        } catch {
+
+        }
     }
     useEffect(() => {
         console.log(Login)
@@ -30,7 +33,7 @@ const FlowerList = ({Login}) => {
                     count < 14 ? "중간싹/" : 
                     count < 22 ? "꽃봉오리/" : "꽃/" 
                 }${emotion}.png`}></img> 
-            : null
+            : <img id='flower' src={`images/씨앗.png`} />
             }
         </div>
     );

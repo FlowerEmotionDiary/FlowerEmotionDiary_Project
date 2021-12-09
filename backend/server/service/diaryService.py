@@ -1,6 +1,7 @@
 from domain.dao.diaryDao import check_diary_date, new_diary, all_diaries, delete_diary_date, update_diary
 # from service.AI_model.analysisService import function
 
+
 # 일기 작성 서비스
 def diary_post_service(user_id, diary):
     check_diary = check_diary_date(user_id, diary['date'])
