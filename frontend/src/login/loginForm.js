@@ -18,7 +18,7 @@ const LoginForm = () => {
 					email: Yup.string().email('잘못된 이메일 주소입니다.')
 						.required('이메일을 입력해주세요.'),
 					password: Yup.string()
-						.min(8, '비밀번호가 너무 짧습니다. 비밀번호는 최소 8자 이상이어야 합니다.')
+						.min(8, '비밀번호는 최소 8자 이상이어야 합니다.')
 						.max(20, '비밀번호는 20자 이하여야 합니다.')
 						.required('비밀번호를 입력해주세요.'),
 				})}
