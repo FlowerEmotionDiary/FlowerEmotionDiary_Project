@@ -7,7 +7,7 @@ import LineChart from '../components/chart/LineChart';
 const ShowFlowerList = () => {
     return (
         <>
-            <Book left={<FlowerList />} right={<div><DoughnutChart /></div>} />
+            <Book left={<FlowerBoard />} right={<DoughnutChart />} />
         </>
     );
 }
