@@ -62,9 +62,9 @@ const FlowerBoard = ({Login}) => {
     }
     
     return( 
-        <div id='container'>
-            <img id='board' src={`images/board.png`} />
-            <div id='board-container'>
+        <div className='container'>
+            {/* <img className='board' src={`images/board.png`} /> */}
+            <div className='pot-container'>
                 {flowerPotRendering()}
             </div>
         </div>

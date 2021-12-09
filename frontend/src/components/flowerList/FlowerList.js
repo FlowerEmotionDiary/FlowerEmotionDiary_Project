@@ -19,15 +19,16 @@ const FlowerList = ({Login}) => {
     }, []);
    
     return( 
-        <div id='container'>
+        <div id='flower-container'>
             <img id='background' 
                 src={`images/background.png`}>
             </img>
             {
                 emotion ?             
                 <img id='flower' src={`images/${
-                    count < 2 ? "새싹/" : 
-                    count < 4 ? "중간싹/" : "꽃/" 
+                    count < 6 ? "새싹/" : 
+                    count < 14 ? "중간싹/" : 
+                    count < 22 ? "꽃봉오리/" : "꽃/" 
                 }${emotion}.png`}></img> 
             : null
             }
