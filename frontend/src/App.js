@@ -43,7 +43,7 @@ class App extends Component {
           <Route exact path='/moreAbout' element={<ShowMoreAbout />} />
           <Route exact path="/team" element={<ShowTeam />} />
           <Route exact path="/diary" element={<ShowDiaryPage />} />
-          <Route exact path="/chart" element={<Chart />} />
+          {/* <Route exact path="/chart" element={<Chart />} /> */}
         </Routes>
       </BrowserRouter>
     );
