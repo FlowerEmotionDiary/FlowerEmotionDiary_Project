@@ -1,11 +1,11 @@
-import Team from "../components/Teampage/Team";
-
+import TeamLeft from "../components/Teampage/TeamLeft";
+import TeamRight from "../components/Teampage/TeamRight";
 import Book from "../components/Book/Book";
 
 const ShowTeam = () => {
     return (
         <>
-            <Book left={<Team />} right={<Team />} />
+            <Book left={<TeamLeft />} right={<TeamRight/>} />
         </>
     );
 }
