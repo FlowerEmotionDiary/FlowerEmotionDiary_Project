@@ -36,10 +36,18 @@ const DiaryWritePage = () => {
     const SubmitDiary = () => {
         const diaryData = { title: title, content: content, date: date };
         console.log("diary-data-date: ", date)
-        axios.post('/diary', diaryData).then((res) => {
-            console.log(res)
-            navigate(`/diary?writtenDate=${date}`);
-        })
+        if( diaryTitle === null && diaryContent === null) {
+            axios.post('/diary', diaryData).then((res) => {
+                console.log(res)
+                navigate(`/diary?writtenDate=${date}`);
+            })            
+        }
+        else {
+            axios.patch(`/diary`, {title: title, content: content}).then((res) => {
+                console.log(res)
+            })
+        }
+
         console.log(date)
     }
 
