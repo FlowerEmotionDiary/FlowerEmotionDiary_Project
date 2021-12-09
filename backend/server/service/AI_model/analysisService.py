@@ -6,8 +6,11 @@ import fasttext
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import pathlib
+<<<<<<< HEAD
 from collections import defaultdict
 import re
+=======
+>>>>>>> 0dd7b12d92d664f11a36d2438a523703edba6a65
 
 current_path = str(pathlib.Path(__file__).parent.resolve())
 

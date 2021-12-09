@@ -29,3 +29,4 @@ def get_charts():
     year, month = chart_request_dto()
     result = chart_service(user_id=user_id, month=month, year=year)
     return chart_response_dto(result)
+
