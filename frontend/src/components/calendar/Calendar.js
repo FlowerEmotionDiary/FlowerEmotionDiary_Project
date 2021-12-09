@@ -19,44 +19,64 @@ const CalendarPage =()=>{
   // lastWeek에서 쓰인 조건문을 보면 1년은 52주가 존재하고 며칠이 더 있는데 이 부분을 달력은 53주로써 표현해야 합니다!! 
   // 하지만 moment()는 내년의 첫 주인 1로 표시하기 때문에 마지막 주가 1이라면 53으로 표시합니다.(2월이 29일이 아닌 년도의 12월 마지막 주의 경우 1을 리턴)
 
-  // 날짜에 따른 감정을 담아주는 딕셔너리
-  const emo = {};
+  const [diaryEmo, setDiaryEmo] = useState([]);
+  const [diaryDate, setDiaryDate] = useState([]);
   
   // 감정에 따른 색들
   const emoColor = {"행복": "yellow", "슬픔": "blue", "중립": "lightgray", 
                     "놀람": "orange", "혐오": "green", "분노": "red", "공포": "purple"};
   
-  const makeDiaryList = async () => {
-      const diaryList = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
-
-      for (let i = 0; i < diaryList.data.length; i++) {
-        emo[diaryList.data[i].date] = diaryList.data[i].emotion;
-      }
-      console.log(emo);
-      return emo;
+  const makeEmoList = async () => {
+      const emolist = [];
+      await axios.get(`/diaries`).then(({data}) => {
+          for (let i = 0; i < data.length; i++) {
+            emolist.push(data[i].emotion);
+          }
+      });
+      console.log(emolist)
+      return emolist;
   };
 
-  useEffect(() => makeDiaryList(), []);
-  console.log("emo에 추가한게 여기에서 실행해도 반영이 될까?: ", emo);
+  const makeDateList = async () => {
+        const datelist = []
+        await axios.get(`/diaries`).then(({data}) => {
+            for (let i = 0; i < data.length; i++) {
+              datelist.push(data[i].date);
+            }
+        });
+        console.log(datelist);
+        return datelist;
+    };
+
+  useEffect(() => {
+    const getEmo = async () => {
+      const emolist = await makeEmoList();
+      setDiaryEmo(emolist);
+    }
+    const getDate = async () => {
+      const datelist = await makeDateList();
+      setDiaryDate(datelist);
+    }
+    getEmo();
+    getDate();
+  }, [])
 
   // date 를 받아서 페이지 이동하는 함수
-  const getDiary = async (date) => {
-    const emoList = await makeDiaryList();
-    console.log("emoList로 제대로 잘 받아오는지?: ",emoList);
-    if (date in emoList) {
+  const getDiary = (date) => {
+    if (moment(date).isAfter(moment().format('YYYY-MM-DD'))) return;
+    for (let i = 0; i < diaryDate.length; i++){
+      console.log(diaryDate)
+      if (date === diaryDate[i]) {
       navigate(`/diary?writtenDate=${date}`);
       return;
+      }
     }
-    else {
-      navigate(`/diary-write?selectedDate=${date}`);
-    }
+    navigate(`/diary-write?selectedDate=${date}`);
   }
 
-  const calendarArr = async ()=>{
+  const calendarArr = ()=>{
 
     let result = [];
-    const emoList = await makeDiaryList();
-    console.log("emoList로 제대로 잘 받아오는지?: ",emoList);
 
     for ( let week = firstWeek; week <= lastWeek; week++) {
       result = result.concat(
@@ -68,12 +88,11 @@ const CalendarPage =()=>{
               let days = today.clone().startOf('year').week(week).startOf('week').add(index,'day');
 
               if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
-                // console.log("해당 날짜의 감정을 제대로 잘 받아오는지?: ", emoColor[emoList[days.format('YYYY-MM-DD')]])
                 return(
                     <td className="todayButton" key={index} >
                       <button className="todayButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}
-                      // style={{ backgroundColor : (days.format('YYYY-MM-DD') in emoList ? 
-                      // emoColor[emoList[days.format('YYYY-MM-DD')]] : "white") }}
+                      style={{backgroundColor : diaryDate.includes(days.format('YYYY-MM-DD')) ? 
+                      emoColor[diaryEmo[diaryDate.indexOf(days.format('YYYY-MM-DD'))]] : "transparent" }}
                       >
                         <span>{days.format('D')}</span>
                       </button>
@@ -82,7 +101,10 @@ const CalendarPage =()=>{
               }else if(days.format('MM') !== today.format('MM')){
                 return(
                     <td className="nextMonthButton" key={index} >
-                      <button className="nextMonthButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}>
+                      <button className="nextMonthButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}
+                      style={{backgroundColor : diaryDate.includes(days.format('YYYY-MM-DD')) ? 
+                      emoColor[diaryEmo[diaryDate.indexOf(days.format('YYYY-MM-DD'))]] : "gray" }}
+                      >
                         <span>{days.format('D')}</span>
                       </button>
                     </td>
@@ -90,7 +112,10 @@ const CalendarPage =()=>{
               }else{
                 return(
                     <td className="restButton" key={index}  >
-                      <button className="restButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}>
+                      <button className="restButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}
+                      style={{backgroundColor : diaryDate.includes(days.format('YYYY-MM-DD')) ? 
+                      emoColor[diaryEmo[diaryDate.indexOf(days.format('YYYY-MM-DD'))]] : "transparent" }}
+                      >
                         <span>{days.format('D')}</span>
                       </button>
                     </td>
@@ -113,12 +138,6 @@ const CalendarPage =()=>{
     )
   }
 
-  // 일기 목록을 불러오는 "diary print" 버튼을 눌렀을 때 실헹되는 함수
-  const getCalendar = async() => {
-    const response = await axios.get(`http://elice-kdt-2nd-team11.koreacentral.cloudapp.azure.com/api/diaries`);
-    setCalendar(response.data);
-  }
-
   return(
     <div className="App">
         <div className="control">
@@ -139,7 +158,6 @@ const CalendarPage =()=>{
             {calendarArr()}
           </tbody>
         </table>
-        <button className="diary-print" onClick={getCalendar}>diary print</button> {/* 갑자기 이 부분이 안됩니다... */}
         <div>
         { 
           calendar?
