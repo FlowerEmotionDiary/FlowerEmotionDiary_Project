@@ -30,12 +30,9 @@ const DiaryWritePage = () => {
 
     const SubmitDiary = () => {
         const diaryData = { title: title, content: content, date: date };
-        console.log("diary-data-date: ", date)
         axios.post('/diary', diaryData).then((res) => {
-            console.log(res)
             navigate(`/diary?writtenDate=${date}`);
         })
-        console.log(date)
     }
 
 
