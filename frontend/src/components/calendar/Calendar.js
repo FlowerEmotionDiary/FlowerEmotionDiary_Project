@@ -102,8 +102,6 @@ const CalendarPage =()=>{
                 return(
                     <td className="nextMonthButton" key={index} >
                       <button className="nextMonthButton" onClick={()=>getDiary(days.format('YYYY-MM-DD'))}
-                      style={{backgroundColor : diaryDate.includes(days.format('YYYY-MM-DD')) ? 
-                      emoColor[diaryEmo[diaryDate.indexOf(days.format('YYYY-MM-DD'))]] : "gray" }}
                       >
                         <span>{days.format('D')}</span>
                       </button>
@@ -128,16 +126,6 @@ const CalendarPage =()=>{
     return result;
   }
 
-  function Diary({diary}) {
-    return (
-      <div>
-        <p>date: {diary.date}</p>
-        <p>title: {diary.title}</p> 
-        <p>content: {diary.content}</p>
-      </div>
-    )
-  }
-
   return(
     <div className="App">
         <div className="control">
@@ -158,13 +146,6 @@ const CalendarPage =()=>{
             {calendarArr()}
           </tbody>
         </table>
-        <div>
-        { 
-          calendar?
-            calendar.map(diary => <Diary diary={diary} />) 
-          : null
-        }
-        </div>
     </div>
   );
 }
