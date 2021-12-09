@@ -1,11 +1,11 @@
-import FlowerList from "../components/FlowerList";
-import MoreAbout from "../components/MoreAbout";
+import MoreAboutRight from "../components/MoreAbout/MoreAboutRight";
+import MoreAboutLeft from "../components/MoreAbout/MoreAboutLeft";
 import Book from "../components/Book/Book";
 
 const ShowMoreAbout = () => {
     return (
         <>
-            <Book left={<MoreAbout />} right={<FlowerList />} />
+            <Book left={<MoreAboutLeft />} right={<MoreAboutRight />} />
         </>
     );
 }

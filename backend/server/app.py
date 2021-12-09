@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from apis.Controller.loginController import login_bp
 from apis.Controller.userController import user_bp
 from apis.Controller.diaryController import diary_bp
+from apis.Controller.statisticsController import statistics_bp
 from db_connect import db
 import config
 
@@ -15,6 +16,7 @@ def create_app():
   app.register_blueprint(login_bp)
   app.register_blueprint(user_bp)
   app.register_blueprint(diary_bp)
+  app.register_blueprint(statistics_bp)
   app.config.from_object(config)
 
   JWTManager(app)
@@ -28,4 +30,4 @@ def create_app():
   return app
 
 if __name__ == "__main__":
-    create_app().run(debug=True)
+    create_app().run('0.0.0.0', port=5000, debug=True)

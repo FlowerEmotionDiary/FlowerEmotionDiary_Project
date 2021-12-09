@@ -1,5 +1,5 @@
 import Diary from "../components/diary/Diary";
-import FlowerList from "../components/FlowerList";
+import FlowerList from "../components/flowerList/FlowerList";
 import Book from "../components/Book/Book";
 
 const ShowDiaryPage = () => {
