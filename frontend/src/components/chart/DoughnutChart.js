@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './DoughnutChart.scss'
 import axios from 'axios';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap'
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
