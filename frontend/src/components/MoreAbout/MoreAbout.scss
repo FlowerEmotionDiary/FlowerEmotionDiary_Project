@@ -1,33 +1,46 @@
-.intro{
-    text-align: center;
-    font-size : 100%;
-    font-weight: bold;
+@font-face{
+    font-family: 'snowfont';
+    src: url('../../fonts/SF함박눈-TTF.ttf')
 }
 
-.Question{
-    text-align: left;
-    margin-top : 10%;
-    margin-right: 5%;
+@font-face{
+    font-family: 'hamLight';
+    src: url('../../fonts/Hahmlet-Light.ttf')
+}
 
+@font-face{
+    font-family: 'hamMedium';
+    src: url('../../fonts/Hahmlet-Medium.ttf')
 }
-.Answer{
-    text-align: left;
-    margin-top : 10%;
-    margin-right: 5%;
-    text-align: justify;
-    word-break: break-all;
+
+@font-face{
+    font-family: 'hamExtraL';
+    src: url('../../fonts/Hahmlet-ExtraLight.ttf')
 }
-.QuestionText{
-    font-size:120%;
-    font-weight: 900;
-    word-break: normal;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    padding-bottom: 10%;
+
+.fullpage {
+    height: 92%;
+    margin: 5%;
+    border: 1.5px solid #CADCAC;
+    border-radius: 20px;
+    font-family: 'hamLight';
+
+    .text-container{
+        text-align: center;
+        place-items: center;
+        margin: 10px;
+
+        .title {
+            color: #f0bb62;
+        }
+
+        .QuestionText{
+            text-align: left;
+            // font-weight: 900;
+            // word-break: normal;
+        }
+    }
+    
+    
 }
-.AnswerText{
-    font-size:120%;
-    font-weight: 900;
-    word-break: normal;
-    margin-top: 10%;
-}
+

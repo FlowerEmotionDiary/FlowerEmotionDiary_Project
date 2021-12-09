@@ -80,12 +80,12 @@ const Diary = () => {
     if (error) return <div>에러 발생</div>;
 
     return (
-        <div>
+        <div className="Diary-container">
             <h4><p id='date'>{year}년 {month}월 {day}일</p></h4>
             <h2>{fulldata && <p id='diarytitle'>{fulldata.title}</p>}</h2>
             <h4>{fulldata && <p id='diarycontent'>{fulldata.content}</p>}</h4>
-            <button id='button' onClick={handleModify}>수정</button>
-            <button id='button2' onClick={handleDelete}>삭제</button>
+            <button className='button' onClick={handleModify}>수정</button>
+            <button className='button' onClick={handleDelete}>삭제</button>
         </div>
     );
 }
