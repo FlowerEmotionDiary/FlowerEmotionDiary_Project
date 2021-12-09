@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { logoutDB } from "../login/LoginValidation";
 import { useNavigate } from 'react-router';
-import '../../src/intro.png';
+import './FirstPage.scss';
+// import { Container } from "@nivo/core";
 
 const FirstPage = ({ Login }) => {
     const navigate = useNavigate();
     return (
-        <>
+        <div className="h">
             <div className="intro">
                 나의 하루를 적어보세요.<br />
                 당신의 감정을 분석해드립니다.<br />
@@ -18,11 +19,11 @@ const FirstPage = ({ Login }) => {
                 {
                     Login.login.is_login ?
                         <button type="button" onClick={() => logoutDB(navigate)}>로그아웃</button>
-                        : <Link to="/login"><button type="button" className="moreAbout">일기 쓰러가기</button></Link>
+                        : <Link to="/login"><button type="button" className="goWrite">일기 쓰러가기</button></Link>
 
                 }
             </div>
-        </>
+        </div>
     );
 
 }
