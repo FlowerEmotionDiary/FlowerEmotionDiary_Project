@@ -8,19 +8,16 @@ const FlowerBoard = ({Login}) => {
     var this_year = now.getFullYear();
     const [flowerList, setFlowerList] = useState([]);
     const [year, setYear] = useState(this_year);
-    console.log(year)
 
     const getFlowerList = async () => {
         await axios.get(`/flowers/${year}`)
             .then(({data}) => {
-                console.log(data)
                 setFlowerList(data);
             });
     }
     useEffect(() => {
         if(Login.login.is_login){
             getFlowerList();
-            console.log(flowerList);
         }
     }, []);
 
@@ -48,7 +45,6 @@ const FlowerBoard = ({Login}) => {
                 const count = flowerList[i].count
                 const emotion = flowerList[i].emotion
                 const month = flowerList[i].month
-                console.log(count, emotion, month);
                 
                 result[flowerList[i].month - 1] = 
                     <div class="pot">

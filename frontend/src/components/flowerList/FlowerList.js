@@ -15,7 +15,6 @@ const FlowerList = ({Login}) => {
         }
     }
     useEffect(() => {
-        console.log(Login)
         if(Login.login.is_login){
             getFlower();
         }
