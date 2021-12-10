@@ -1,14 +1,12 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './DoughnutChart.scss'
 import axios from 'axios';
 import { Dropdown } from 'react-bootstrap'
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 
 export default function DoughnutChart() {
     const d = new Date()
@@ -17,55 +15,6 @@ export default function DoughnutChart() {
     const [year, setYear] = useState(now_year)
     const [month, setMonth] = useState(now_month)
     const [datalist, setDatalist] = useState('')
-
-    const onSelectYear = (eventKey) => {
-        setYear(eventKey)
-        console.log(year)
-    }
-
-    const onSelectMonth = (eventKey) => {
-        setMonth(eventKey)
-        console.log(month)
-
-        const res = async () => {
-            try {
-                const response = await axios.get(`/chart?year=${year}&month=${month}`)
-                console.log("response data", response)
-                setDatalist(response.data)
-                console.log("try문에서 실행한 datalist", datalist)
-
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        res()
-        console.log("try문 밖에서 실행한 datalist", datalist)
-    }
-
-    // const list2 = [datalist['공포'], datalist['놀람'], datalist['분노'], datalist['슬픔'], datalist['중립'], datalist['행복'], datalist['혐오']]
-    // console.log(list2)
-    const data = {
-
-        labels: ['공포', '놀람', '분노', '슬픔', '중립', '행복', '혐오'],
-        datasets: [
-            {
-                // data: list2,
-                data: [1, 2, 3, 4, 5, 6, 7],
-                backgroundColor: [
-                    '#BFCBA8',
-                    '#5B8A72',
-                    '#56776C',
-                    '#464F41',
-                    '#F0BB62',
-                    '#F4EEA9',
-                    '#FCF8E8'
-                ],
-
-                borderWidth: 0,
-            },
-        ],
-    };
-
     const options = {
         // responsive: false,
         animation: {
@@ -83,6 +32,55 @@ export default function DoughnutChart() {
             },
         },
     }
+
+    const onSelectYear = (eventKey) => {
+        setYear(eventKey)
+    }
+
+    const onSelectMonth = (eventKey) => {
+        setMonth(eventKey)
+    }
+
+    const getDataList = async () => {
+        try {
+            const response = await axios.get(`/chart?year=${year}&month=${month}`)
+            console.log("response data", response)
+            setDatalist(response.data)
+            console.log("try문에서 실행한 datalist", datalist)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const list2 = [datalist['공포'], datalist['놀람'], datalist['분노'], datalist['슬픔'], datalist['중립'], datalist['행복'], datalist['혐오']]
+    console.log(list2)
+    const data = {
+
+        labels: ['공포', '놀람', '분노', '슬픔', '중립', '행복', '혐오'],
+        datasets: [
+            {
+                data: list2,
+                // data: [1, 2, 3, 4, 5, 6, 7],
+                backgroundColor: [
+                    '#BFCBA8',
+                    '#5B8A72',
+                    '#56776C',
+                    '#464F41',
+                    '#F0BB62',
+                    '#F4EEA9',
+                    '#FCF8E8'
+                ],
+
+                borderWidth: 0,
+            },
+        ],
+    };
+
+    useEffect(() => {
+        getDataList();
+        console.log("try문 밖에서 실행한 datalist", datalist)
+    }, [month]);
 
     return (
         <div>
