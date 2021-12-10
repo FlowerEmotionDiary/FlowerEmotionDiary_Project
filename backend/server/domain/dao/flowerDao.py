@@ -1,5 +1,7 @@
-from domain.models.flower import Flower, db
+from domain.models.flower import Flower
 from datetime import datetime, date
+from db_connect import session
+
 def new_flower(user_id, count, emotion):
     cur_date = date(datetime.today().year, datetime.today().month, 1)
 
@@ -9,15 +11,17 @@ def new_flower(user_id, count, emotion):
         emotion=emotion,
         date=cur_date
     )
-    db.session.add(flower)
-    db.session.commit()
+    session.add(flower)
+    session.commit()
+    session.close()
     return flower
 
 def update_flower(user_id, count, emotion):
     flower = check_flower(user_id)
     flower.count = count
     flower.emotion = emotion
-    db.session.commit()
+    session.commit()
+    session.close()
     return flower
 
 def check_flower(user_id):

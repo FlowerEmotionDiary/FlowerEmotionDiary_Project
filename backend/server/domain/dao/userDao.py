@@ -1,4 +1,5 @@
-from domain.models.user import User, db
+from domain.models.user import User
+from db_connect import session
 
 def one_user(identity):
     if str(type(identity)) == "<class 'str'>":
@@ -10,6 +11,7 @@ def one_user(identity):
 
 def new_user(email, password, name):
     user = User(email, password, name)
-    db.session.add(user)
-    db.session.commit()
+    session.add(user)
+    session.commit()
+    session.close()
     return user

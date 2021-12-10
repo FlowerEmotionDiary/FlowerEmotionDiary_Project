@@ -1,11 +1,12 @@
-from db_connect import db
+from sqlalchemy import Column, Integer, String
+from db_connect import Base
 
-class User(db.Model):
+class User(Base):
     __tablename__ = "User"
-    id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
-    email = db.Column(db.String(100), nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-    name = db.Column(db.String(50), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    email = Column(String(100), nullable=False)
+    password = Column(String(255), nullable=False)
+    name = Column(String(50), nullable=False)
 
     def __init__(self, email, password, name):
         self.email = email

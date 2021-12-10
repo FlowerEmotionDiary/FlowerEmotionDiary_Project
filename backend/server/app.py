@@ -18,7 +18,6 @@ def create_app():
   app.register_blueprint(diary_bp)
   app.register_blueprint(statistics_bp)
   app.config.from_object(config)
-
   JWTManager(app)
   db.init_app(app)
 
