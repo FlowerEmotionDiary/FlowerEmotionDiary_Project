@@ -60,13 +60,13 @@ export default function DoughnutChart() {
                 data: list2,
                 // data: [1, 2, 3, 4, 5, 6, 7],
                 backgroundColor: [
-                    '#BFCBA8',
-                    '#5B8A72',
-                    '#56776C',
-                    '#464F41',
-                    '#F0BB62',
-                    '#F4EEA9',
-                    '#FCF8E8'
+                    '#55567d',
+                    '#f0bb62',
+                    '#ae5333',
+                    '#668b85',
+                    '#99d41e',
+                    '#dfe100',
+                    '#5d6856'
                 ],
 
                 borderWidth: 0,
