@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const NavigationBar = ({ Login }) => {
   const navigate = useNavigate();
   const activeStyle = {
-    width: "100px",
+    width: "120px",
     left: "-20px",
     backgroundColor: "#f0bb62"
   }
