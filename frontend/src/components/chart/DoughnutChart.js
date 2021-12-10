@@ -29,13 +29,10 @@ export default function DoughnutChart() {
 
         const res = async () => {
             try {
-                const response = await axios.get(`/chart?year=${year}&month=${month}`)
+                await axios.get(`/chart?year=${year}&month=${month}`)
                     .then(({ data }) => {
                         setDatalist(data);
-                        console.log(datalist)
                     });
-                console.log("response data", response)
-                // setDatalist(response.data)
                 console.log("try문에서 실행한 datalist", datalist)
 
             } catch (error) {
@@ -47,7 +44,7 @@ export default function DoughnutChart() {
     }
 
     const list2 = [datalist['공포'], datalist['놀람'], datalist['분노'], datalist['슬픔'], datalist['중립'], datalist['행복'], datalist['혐오']]
-    console.log(list2)
+    console.log("차트에 들어갈 리스트", list2)
     const data = {
 
         labels: ['공포', '놀람', '분노', '슬픔', '중립', '행복', '혐오'],
