@@ -1,5 +1,7 @@
-from domain.models.flower import Flower, db
+from domain.models.flower import Flower
 from datetime import datetime, date
+from db_connect import session
+
 def new_flower(user_id, count, emotion):
     cur_date = date(datetime.today().year, datetime.today().month, 1)
 
@@ -9,19 +11,19 @@ def new_flower(user_id, count, emotion):
         emotion=emotion,
         date=cur_date
     )
-    db.session.add(flower)
-    db.session.commit()
+    session.add(flower)
+    session.commit()
     return flower
 
 def update_flower(user_id, count, emotion):
     flower = check_flower(user_id)
     flower.count = count
     flower.emotion = emotion
-    db.session.commit()
+    session.commit()
     return flower
 
 def check_flower(user_id):
-    flowers = Flower.query.filter_by(user_id=user_id).all()
+    flowers = session.query(Flower).filter(Flower.user_id==user_id).all()
     result = None
     for flower in flowers:
         if flower.date.year == datetime.today().year and flower.date.month == datetime.today().month:
@@ -32,7 +34,7 @@ def check_flower(user_id):
         return False
  
 def statics_year(user_id, year):
-    flowers = Flower.query.filter_by(user_id=user_id).all()
+    flowers = session.query(Flower).filter(Flower.user_id==user_id).all()
     result = []
     for flower in flowers:
         if flower.date.year == year:

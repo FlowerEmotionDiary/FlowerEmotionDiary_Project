@@ -1,5 +1,5 @@
-from domain.models.diary import Diary, db
-from datetime import datetime
+from domain.models.diary import Diary
+from db_connect import session
 
 # 새로운 일기 생성
 def new_diary(date, title, content, user_id, emotion):
@@ -16,27 +16,27 @@ def new_diary(date, title, content, user_id, emotion):
         aversion = emotion['혐오'],
         neutral =emotion['중립'])
 
-    db.session.add(diary)
-    db.session.commit()
+    session.add(diary)
+    session.commit()
     return diary
 
 # 해당 날짜에 유저가 작성한 일기 
 def check_diary_date(user_id, date):
-    result = Diary.query.filter_by(user_id=user_id, date=date).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==date).first()
     return result
 
 # 해당 날짜에 유저가 작성한 일기 삭제
 def delete_diary_date(user_id, date):
-    result = Diary.query.filter_by(user_id=user_id, date=date).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==date).first()
     if result:
-        db.session.delete(result)
-        db.session.commit()
+        session.delete(result)
+        session.commit()
         return True
     else:
         return False
 
 def update_diary(user_id, diary, emotion):
-    result = Diary.query.filter_by(user_id=user_id, date=diary['date']).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==diary['date']).first()
     if result:
         result.content = diary['content']
         result.happy = emotion['행복'],
@@ -46,7 +46,7 @@ def update_diary(user_id, diary, emotion):
         result.anger = emotion['분노'],
         result.aversion = emotion['혐오'],
         result.neutral =emotion['중립']
-        db.session.commit()
+        session.commit()
         return True
     else:
         return False
@@ -69,5 +69,5 @@ def diaries_month(user_id, month, year):
     return result  
 
 def all_diaries(user_id):
-    result = Diary.query.filter_by(user_id=user_id).all()
+    result = session.query(Diary).filter(Diary.user_id==user_id).all()
     return result
