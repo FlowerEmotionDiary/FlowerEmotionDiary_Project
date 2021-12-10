@@ -22,12 +22,12 @@ def new_diary(date, title, content, user_id, emotion):
 
 # 해당 날짜에 유저가 작성한 일기 
 def check_diary_date(user_id, date):
-    result = Diary.query.filter_by(user_id=user_id, date=date).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==date).first()
     return result
 
 # 해당 날짜에 유저가 작성한 일기 삭제
 def delete_diary_date(user_id, date):
-    result = Diary.query.filter_by(user_id=user_id, date=date).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==date).first()
     if result:
         session.delete(result)
         session.commit()
@@ -36,7 +36,7 @@ def delete_diary_date(user_id, date):
         return False
 
 def update_diary(user_id, diary, emotion):
-    result = Diary.query.filter_by(user_id=user_id, date=diary['date']).first()
+    result = session.query(Diary).filter(Diary.user_id==user_id, Diary.date==diary['date']).first()
     if result:
         result.content = diary['content']
         result.happy = emotion['행복'],
@@ -69,5 +69,5 @@ def diaries_month(user_id, month, year):
     return result  
 
 def all_diaries(user_id):
-    result = Diary.query.filter_by(user_id=user_id).all()
+    result = session.query(Diary).filter(Diary.user_id==user_id).all()
     return result

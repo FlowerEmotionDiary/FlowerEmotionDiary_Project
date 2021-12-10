@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from db_connect import Base
+from db_connect import Base, engine
 
 class User(Base):
     __tablename__ = "User"
@@ -12,3 +12,5 @@ class User(Base):
         self.email = email
         self.password = password
         self.name = name
+
+User.__table__.create(bind=engine, checkfirst=True)

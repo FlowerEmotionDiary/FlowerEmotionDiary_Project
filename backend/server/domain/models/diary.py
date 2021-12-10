@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Float, Text
-from db_connect import Base
+from db_connect import Base, engine
 
 class Diary(Base):
     __tablename__ = "Diary"
@@ -18,8 +18,10 @@ class Diary(Base):
 
     user_id = Column(Integer, ForeignKey('User.id'), nullable=False)
     
-    def __init__(self, date, title, content, user_id):
-        self.date = date
-        self.title = title
-        self.content = content
-        self.user_id = user_id
+    # def __init__(self, date, title, content, user_id):
+    #     self.date = date
+    #     self.title = title
+    #     self.content = content
+    #     self.user_id = user_id
+
+Diary.__table__.create(bind=engine, checkfirst=True)

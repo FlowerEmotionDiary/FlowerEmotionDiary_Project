@@ -13,7 +13,6 @@ def new_flower(user_id, count, emotion):
     )
     session.add(flower)
     session.commit()
-    session.close()
     return flower
 
 def update_flower(user_id, count, emotion):
@@ -21,11 +20,10 @@ def update_flower(user_id, count, emotion):
     flower.count = count
     flower.emotion = emotion
     session.commit()
-    session.close()
     return flower
 
 def check_flower(user_id):
-    flowers = Flower.query.filter_by(user_id=user_id).all()
+    flowers = session.query(Flower).filter(Flower.user_id==user_id).all()
     result = None
     for flower in flowers:
         if flower.date.year == datetime.today().year and flower.date.month == datetime.today().month:
@@ -36,7 +34,7 @@ def check_flower(user_id):
         return False
  
 def statics_year(user_id, year):
-    flowers = Flower.query.filter_by(user_id=user_id).all()
+    flowers = session.query(Flower).filter(Flower.user_id==user_id).all()
     result = []
     for flower in flowers:
         if flower.date.year == year:

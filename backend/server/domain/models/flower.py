@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Float, Text
-from db_connect import Base
+from db_connect import Base, engine
 
 
 class Flower(Base):
@@ -16,3 +16,5 @@ class Flower(Base):
     #     self.title = title
     #     self.content = content
     #     self.user_id = user_id
+
+Flower.__table__.create(bind=engine, checkfirst=True)

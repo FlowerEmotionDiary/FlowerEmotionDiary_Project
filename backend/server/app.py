@@ -7,7 +7,7 @@ from apis.Controller.loginController import login_bp
 from apis.Controller.userController import user_bp
 from apis.Controller.diaryController import diary_bp
 from apis.Controller.statisticsController import statistics_bp
-from db_connect import db
+# from db_connect import db
 import config
 
 
@@ -19,10 +19,10 @@ def create_app():
   app.register_blueprint(statistics_bp)
   app.config.from_object(config)
   JWTManager(app)
-  db.init_app(app)
+  # db.init_app(app)
 
-  migrate = Migrate(app, db)
-  migrate.init_app(app, db, compare_type=True)
+  # migrate = Migrate(app, db)
+  # migrate.init_app(app, db, compare_type=True)
 
   CORS(app, supports_credentials=True)
 
