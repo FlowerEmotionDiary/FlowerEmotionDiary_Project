@@ -15,8 +15,7 @@ const Book = props => {
                     <div className="rightpage">{props.right}</div>
                 </div>
             </div>
-            
-            <button onClick={()=>logoutDB(navigate)}>로그아웃</button>
+
         </>
     );
 }
