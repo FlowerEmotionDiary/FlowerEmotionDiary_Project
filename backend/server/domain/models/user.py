@@ -13,4 +13,4 @@ class User(Base):
         self.password = password
         self.name = name
 
-User.__table__.create(bind=engine, checkfirst=True)
+# User.__table__.create(bind=engine, checkfirst=True)

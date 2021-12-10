@@ -17,4 +17,4 @@ class Flower(Base):
     #     self.content = content
     #     self.user_id = user_id
 
-Flower.__table__.create(bind=engine, checkfirst=True)
+# Flower.__table__.create(bind=engine, checkfirst=True)

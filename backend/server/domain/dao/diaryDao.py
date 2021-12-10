@@ -1,5 +1,5 @@
 from domain.models.diary import Diary
-from db_connect import session, session_scope
+from db_connect import session
 
 # 새로운 일기 생성
 def new_diary(date, title, content, user_id, emotion):
@@ -16,9 +16,8 @@ def new_diary(date, title, content, user_id, emotion):
         aversion = emotion['혐오'],
         neutral =emotion['중립'])
 
-    with session_scope() as session:
-        session.add(diary)
-        session.commit()
+    session.add(diary)
+    session.commit()
     return diary
 
 # 해당 날짜에 유저가 작성한 일기 

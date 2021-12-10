@@ -24,4 +24,4 @@ class Diary(Base):
     #     self.content = content
     #     self.user_id = user_id
 
-Diary.__table__.create(bind=engine, checkfirst=True)
+# Diary.__table__.create(bind=engine, checkfirst=True)
