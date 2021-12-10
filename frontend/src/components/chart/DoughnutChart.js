@@ -39,22 +39,19 @@ export default function DoughnutChart() {
 
     const onSelectMonth = (eventKey) => {
         setMonth(eventKey)
+        getDataList()
     }
 
     const getDataList = async () => {
         try {
             const response = await axios.get(`/chart?year=${year}&month=${month}`)
-            console.log("response data", response)
             setDatalist(response.data)
-            console.log("try문에서 실행한 datalist", datalist)
 
         } catch (error) {
-            console.log(error)
         }
     }
 
     const list2 = [datalist['공포'], datalist['놀람'], datalist['분노'], datalist['슬픔'], datalist['중립'], datalist['행복'], datalist['혐오']]
-    console.log(list2)
     const data = {
 
         labels: ['공포', '놀람', '분노', '슬픔', '중립', '행복', '혐오'],
@@ -79,7 +76,6 @@ export default function DoughnutChart() {
 
     useEffect(() => {
         getDataList();
-        console.log("try문 밖에서 실행한 datalist", datalist)
     }, [month]);
 
     return (
