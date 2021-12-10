@@ -32,7 +32,7 @@ class LSTM_emotion:
     def split_send_data(self,input_data):
         
         split_data = re.split(f"[{split_string}]",input_data)
-
+        split_data = list(filter(None, split_data))
         emotion_return = defaultdict(float)
 
         for split_data_number in split_data:
