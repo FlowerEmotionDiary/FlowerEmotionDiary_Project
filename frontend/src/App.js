@@ -32,7 +32,7 @@ class App extends Component {
       return null
 
     return (
-      <BrowserRouter>
+      <BrowserRouter id='BrowserRouter'>
         <Routes>
           <Route exact path="/" element={<FirstPage />} />
           <Route exact path="/login" element={<ShowLoginPage />} />
