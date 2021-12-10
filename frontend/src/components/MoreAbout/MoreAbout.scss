@@ -24,6 +24,9 @@
     border: 1.5px solid #CADCAC;
     border-radius: 20px;
     font-family: 'hamLight';
+    text-align: center;
+    place-items: center;
+    
 
     .text-container{
         text-align: center;
@@ -39,6 +42,15 @@
             // font-weight: 900;
             // word-break: normal;
         }
+    }
+
+    .flower-background {
+        object-fit: contain;
+        position: absolute;
+        display: block; 
+        border-radius: 20px;
+        height: 92%;
+        width: 90%;
     }
     
     
