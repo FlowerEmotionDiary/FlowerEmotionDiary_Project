@@ -18,8 +18,10 @@
     border: 2px solid #CADCAC;
     border-radius: 20px;
     display: flex;
-    max-width: 420px;
-    padding-bottom: 60px;
+    max-width: 100%;
+    height: 92%;
+    margin: 5%;
+
     .DiaryTitle{
         font-family: 'hamLight';
         display: flex;
