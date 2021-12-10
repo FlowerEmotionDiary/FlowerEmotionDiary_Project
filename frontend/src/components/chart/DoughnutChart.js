@@ -34,18 +34,18 @@ export default function DoughnutChart() {
     }
 
     const onSelectYear = (eventKey) => {
-        setYear(eventKey)
+        setYear(eventKey);
     }
 
     const onSelectMonth = (eventKey) => {
-        setMonth(eventKey)
-        getDataList()
+        setMonth(eventKey);
+        getDataList();
     }
 
     const getDataList = async () => {
         try {
-            const response = await axios.get(`/chart?year=${year}&month=${month}`)
-            setDatalist(response.data)
+            const response = await axios.get(`/chart?year=${year}&month=${month}`);
+            setDatalist(response.data);
 
         } catch (error) {
         }
