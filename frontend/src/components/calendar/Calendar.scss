@@ -1,4 +1,26 @@
+@font-face{
+    font-family: 'hamLight';
+    src: url('../../fonts/Hahmlet-Light.ttf')
+}
+
+@font-face{
+    font-family: 'hamMedium';
+    src: url('../../fonts/Hahmlet-Medium.ttf')
+}
+
+@font-face{
+    font-family: 'hamExtraL';
+    src: url('../../fonts/Hahmlet-ExtraLight.ttf')
+}
+
+@font-face {
+    font-family: '함박눈';
+    src: url('../../fonts/SF함박눈-TTF.ttf');
+}
+
+
 .calendar {
+    font-family: 'hamLight';
     .todayButton {
         .todayButton {
             background-color: transparent;
@@ -32,8 +54,10 @@
 }
 
 .App {
+    font-family: 'hamMedium';
     margin-top: 40%;
     .control {
+        // font-size: larger;
         margin: 0 auto;
         .beforeMonth {
             background-color: gray;
@@ -57,6 +81,7 @@
     }
 
     .calendar {
+        font-size: large;
         margin: 0 auto;
         margin-top: 25px;
     }

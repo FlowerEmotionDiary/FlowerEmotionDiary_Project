@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import { logoutDB } from "../login/LoginValidation";
 import { useNavigate } from 'react-router';
 import './FirstPage.scss';
+
 // import { Container } from "@nivo/core";
 
 const FirstPage = ({ Login }) => {
     const navigate = useNavigate();
     return (
         <div className="h">
+            <div className='serviceName'>꽃무리</div>
             <div className="intro">
                 나의 하루를 적어보세요.<br />
                 당신의 감정을 분석해드립니다.<br />
-                그리고 감정을 공유해보세요.<br />
+                감정을 꽃피워보세요<br />
             </div>
-            <Link to="/moreAbout"><button type="button" className="moreAbout">more about me</button></Link>
+            <Link to="/moreAbout"><button type="button" className="moreAbout">More about me</button></Link>
             <div>
                 {
                     Login.login.is_login ?
