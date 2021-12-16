@@ -1,5 +1,5 @@
 @font-face{
-    font-family: 'snowfont';
+    font-family: '함박눈';
     src: url('../../fonts/SF함박눈-TTF.ttf')
 }
 
@@ -26,31 +26,53 @@
     font-family: 'hamLight';
     text-align: center;
     place-items: center;
-    
+
 
     .text-container{
+        margin-top: 5%;
         text-align: center;
         place-items: center;
-        margin: 10px;
+
 
         .title {
+            font-family: '함박눈';
             color: #f0bb62;
+            font-size: 30px;
+            padding-left: 17px;
+            padding-bottom: 20px;
+             
         }
 
         .QuestionText{
+            font-family: '함박눈'; 
             text-align: left;
-            // font-weight: 900;
+            padding-left: 17px;
+            padding-right: 16px;
+            margin-bottom: 2px;
+            font-size:18px;
             // word-break: normal;
+        }
+
+        .AnswerText{
+            font-family: 'hamLight';
+            font-size: 15px; 
+            text-align: left;
+            padding-left: 17px;
+            padding-right: 16px;
+            padding-bottom: 10px;
         }
     }
 
     .flower-background {
         object-fit: contain;
         position: absolute;
-        display: block; 
+        display: block;
+
         border-radius: 20px;
-        height: 92%;
-        width: 90%;
+        height: 86%;
+        width: 80%;
+        margin-left: 5%;
+        margin-top: 0;
     }
     
     

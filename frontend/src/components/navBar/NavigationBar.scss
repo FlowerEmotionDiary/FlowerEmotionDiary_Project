@@ -1,7 +1,24 @@
+@font-face{
+  font-family: '함박눈';
+  src: url('../../fonts/SF함박눈-TTF.ttf')
+}
+
+@font-face{
+  font-family: 'hamMedium';
+  src: url('../../fonts/Hahmlet-Medium.ttf')
+}
+
+@font-face{
+  font-family: 'hamExtraL';
+  src: url('../../fonts/Hahmlet-ExtraLight.ttf')
+}
+
+
 .navigation {
 
   // 책갈피 디자인
   .menuBar {
+      font-family: 'hamMedium';  
       display: block;
       position: relative;
       text-decoration-line: none;
